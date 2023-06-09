@@ -37,3 +37,4 @@ yarn-debug.log*
 
 .env
 /docs/er.pu
+/config/initializers/rack_profile.rb
