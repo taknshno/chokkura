@@ -36,5 +36,6 @@ yarn-debug.log*
 .yarn-integrity
 
 .env
+.DS_Store
 /docs/er.pu
 /config/initializers/rack_profile.rb
