@@ -1,5 +1,5 @@
 class Spot < ApplicationRecord
-  mount_uploader :image, ImageUploader
+  mount_uploaders :images, ImageUploader
 
   validates :name, presence: true
   validates :area, presence: true, length: { maximum: 10 }

@@ -15,10 +15,10 @@ class SpotsController < ApplicationController
 
   def confirm
     @spot = Spot.new(spot_params)
-    # if @spot.invalid?
-    #   flash[:danger] = "入力に誤りがあります"
-    #   render :new
-    # end
+    if @spot.invalid?
+      flash[:danger] = "入力に誤りがあります"
+      render :new
+    end
   end
 
   def create
@@ -45,6 +45,6 @@ class SpotsController < ApplicationController
 
   def spot_params
     params.require(:spot).permit(:name, :area, :address, :phone, :holiday,
-       :sales_copy, :detail_description, :simple_description, :image, :image_cache)
+       :sales_copy, :detail_description, :simple_description, :images_cache, {images: []})
   end
 end

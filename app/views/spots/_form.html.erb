@@ -13,44 +13,37 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, size: 54, placeholder:"スポット名を入力" %>
   </div>
   <div class="field">
-    <%= f.label :image %><br>
-    <%= image_tag(@spot.image.url) if @spot.image && @spot.image.url %>
-    <%= f.file_field :image %>
-    <%= f.hidden_field :image_cache %>
+    <% @spot.images.each do |image| %>
+      <%= image_tag(image.url) if image && image.url %>
+    <% end %>
+    <%= f.file_field :images, multiple: true %>
+    <%= f.hidden_field :images_cache %>
   </div>
   <div class="field">
-    <%= f.label :area %><br>
-    <%= f.text_field :area %>
+    <%= f.select :area, ['県北', '県央', '県西', '県南', '鹿行'], {include_blank: '所在エリアを選択する'} %>
   </div>
   <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
+    <%= f.text_field :address, size: "54", placeholder:"住所を入力" %>
   </div>
   <div class="field">
-    <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
+    <%= f.text_field :phone, maxlength: "21", placeholder:"電話番号を入力" %>
   </div>
   <div class="field">
-    <%= f.label :holiday %><br>
-    <%= f.text_field :holiday %>
+    <%= f.text_field :holiday, maxlength: "10", placeholder:"定休日を入力" %>
   </div>
   <div class="field">
-    <%= f.label :sales_copy %><br>
-    <%= f.text_field :sales_copy %>
+    <%= f.text_field :sales_copy, size: "54", placeholder:"セールスコピーを入力" %>
   </div>
   <div class="field">
-    <%= f.label :detail_description %><br>
-    <%= f.text_area :detail_description %>
+    <%= f.text_area :detail_description, size: "50x10", placeholder:"詳細説明を入力" %>
   </div>
   <div class="field">
-    <%= f.label :simple_description %><br>
-    <%= f.text_area :simple_description %>
+    <%= f.text_area :simple_description, size: "50x2", placeholder:"簡易説明を入力" %>
   </div>
   <div class="actions">
-    <%= f.submit "確認" %>
+    <%= f.submit "入力内容を確認する" %>
   </div>
 <% end %>

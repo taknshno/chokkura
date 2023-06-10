@@ -4,8 +4,14 @@
 
 <% @spots.each do |spot| %>
   <hr>
+  <div><%= spot.area %></div>
   <div>
-    <%= spot.id %>
-    <%= image_tag spot.image.url %>
+    <h5><%= spot.name %></h5>
+    <% spot.images.each do |image| %>
+      <% if image && image.url %>
+        <%= image_tag(image.url, style: "max-width: 100px; max-height: 100px;") %>
+      <% end %>
+    <% end %>
   </div>
+  <div><%= spot.simple_description %></div>
 <% end %>

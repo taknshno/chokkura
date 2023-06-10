@@ -2,7 +2,7 @@
 <h2>Confirm</h2>
 <%= form_with(model: @spot, local: true, url: spots_path ) do |f| %>
   <%= f.hidden_field :name %>
-  <%= f.hidden_field :image_cache %>
+  <%= f.hidden_field :images_cache %>
   <%= f.hidden_field :area %>
   <%= f.hidden_field :address %>
   <%= f.hidden_field :phone %>
@@ -11,7 +11,11 @@
   <%= f.hidden_field :detail_description %>
   <%= f.hidden_field :simple_description %>
   <div>Name: <%= @spot.name %></div>
-  <div>Image: <%= image_tag(@spot.image.url) if @spot.image && @spot.image.url %></div>
+  <div>Image:
+    <% @spot.images.each do |image| %>
+      <%= image_tag(image.url) if image && image.url %>
+    <% end %>
+  </div>
   <div>Area: <%= @spot.area %></div>
   <div>Address: <%= @spot.address %></div>
   <div>Phone: <%= @spot.phone %></div>
@@ -25,7 +29,7 @@
 <% end %>
 <%= form_with(model: @spot, url:new_spot_path, local:true, method:"get") do |f| %>
   <%= f.hidden_field :name %>
-  <%= f.hidden_field :image_cache %>
+  <%= f.hidden_field :images_cache %>
   <%= f.hidden_field :area %>
   <%= f.hidden_field :address %>
   <%= f.hidden_field :phone %>

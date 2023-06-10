@@ -1,6 +1,21 @@
 ---
 ja:
   activerecord:
+    models:
+      spot: 観光スポット
+    attributes:
+      spot:
+        name: スポット名
+        images: "スポットイメージ"
+        area: "所在エリア"
+        address: "住所"
+        phone: "電話番号"
+        holiday: "定休日"
+        sales_copy: "セールスコピー"
+        detail_description: "詳細説明"
+        simple_description: "簡易説明"
+        created_at: 作成日
+        updated_at: 更新日
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
