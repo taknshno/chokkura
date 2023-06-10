@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_09_143016) do
+ActiveRecord::Schema.define(version: 2023_06_10_150352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "spots", force: :cascade do |t|
     t.string "name", null: false
-    t.string "image"
+    t.json "images"
     t.string "area", null: false
     t.string "address", null: false
     t.string "phone"
