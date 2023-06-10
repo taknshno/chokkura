@@ -1,6 +1,8 @@
 class Spot < ApplicationRecord
   mount_uploaders :images, ImageUploader
 
+  enum area: { 県北: 1, 県央: 2, 県西: 3, 県南: 4, 鹿行: 5 }
+
   validates :name, presence: true
   validates :area, presence: true, length: { maximum: 10 }
   validates :address, presence: true, length: { maximum: 160 }
