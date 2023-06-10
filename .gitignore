@@ -38,4 +38,6 @@ yarn-debug.log*
 .env
 .DS_Store
 /docs/er.pu
+/public/uploads
+/public/tmp
 /config/initializers/rack_profile.rb

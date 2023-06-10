@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  root 'spots#index'
+  root to: 'spots#index'
 
-  resources :spots
+  resources :spots do
+    collection do
+      post :confirm
+    end
+  end
 end

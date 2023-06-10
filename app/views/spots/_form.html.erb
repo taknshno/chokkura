@@ -1,0 +1,56 @@
+<% content_for(:title, form_title) %>
+<%= form_with(model: @spot, local: true, url: choose_new_or_edit ) do |f| %>
+  <% if @spot.errors.any? %>
+    <div class="form-error-message">
+      <h5>以下のエラーがあります。</h5>
+      <div id="error_explanation">
+        <ul>
+          <% @spot.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= image_tag(@spot.image.url) if @spot.image && @spot.image.url %>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
+  </div>
+  <div class="field">
+    <%= f.label :area %><br>
+    <%= f.text_field :area %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :holiday %><br>
+    <%= f.text_field :holiday %>
+  </div>
+  <div class="field">
+    <%= f.label :sales_copy %><br>
+    <%= f.text_field :sales_copy %>
+  </div>
+  <div class="field">
+    <%= f.label :detail_description %><br>
+    <%= f.text_area :detail_description %>
+  </div>
+  <div class="field">
+    <%= f.label :simple_description %><br>
+    <%= f.text_area :simple_description %>
+  </div>
+  <div class="actions">
+    <%= f.submit "確認" %>
+  </div>
+<% end %>

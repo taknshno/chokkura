@@ -1,0 +1,11 @@
+<% content_for(:title, 'chokkura') %>
+
+<%= link_to 'new', new_spot_path %>
+
+<% @spots.each do |spot| %>
+  <hr>
+  <div>
+    <%= spot.id %>
+    <%= image_tag spot.image.url %>
+  </div>
+<% end %>

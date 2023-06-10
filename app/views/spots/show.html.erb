@@ -1,0 +1,7 @@
+<div id="notice"><%= notice %></div>
+<div>
+  <strong>Image:</strong>
+  <%= image_tag @spot.image.url %>
+</div>
+<%= link_to 'Edit', edit_spot_path(@spot) %> |
+<%= link_to 'Back', spots_path %>
