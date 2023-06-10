@@ -22,6 +22,14 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+  enums:
+    spot:
+      area:
+        KENPOKU: 県北
+        KENOU: 県央
+        KENSEI: 県西
+        KENNAN: 県南
+        ROKKO: 鹿行
   date:
     abbr_day_names:
     - 日
@@ -100,6 +108,7 @@ ja:
   errors:
     format: "%{attribute}%{message}"
     messages:
+      title: "以下のエラーがあります。"
       accepted: を受諾してください
       blank: を入力してください
       confirmation: と%{attribute}の入力が一致しません
@@ -196,3 +205,14 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+  views:
+    messages:
+      register_spot: '観光スポットの登録'
+      select_area: 'エリアの選択'
+    button:
+      submit: '登録する'
+      confirm: '確認する'
+      search: '検索'
+      show: '詳細'
+      edit: '編集'
+      delete: '削除'

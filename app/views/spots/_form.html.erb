@@ -1,19 +1,19 @@
 <% content_for(:title, form_title) %>
 <%= form_with(model: @spot, local: true, url: choose_new_or_edit ) do |f| %>
   <% if @spot.errors.any? %>
-    <div class="form-error-message">
-      <h5>以下のエラーがあります。</h5>
-      <div id="error_explanation">
+    <div>
+      <h5><%= t('errors.messages.title') %></h5>
+      <div>
         <ul>
-          <% @spot.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
+          <% @spot.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
           <% end %>
         </ul>
       </div>
     </div>
   <% end %>
   <div class="field">
-    <%= f.text_field :name, size: 54, placeholder:"スポット名を入力" %>
+    <%= f.text_field :name, size: 54, placeholder:t('activerecord.attributes.spot.name') %>
   </div>
   <div class="field">
     <% @spot.images.each do |image| %>
@@ -23,27 +23,27 @@
     <%= f.hidden_field :images_cache %>
   </div>
   <div class="field">
-    <%= f.select :area, ['県北', '県央', '県西', '県南', '鹿行'], {include_blank: '所在エリアを選択する'} %>
+    <%= f.select :area, Spot.areas.keys.map { |k| [t("enum.spot.area.#{k}"), k] }, { include_blank: t('views.messages.select_area') } %>
   </div>
   <div class="field">
-    <%= f.text_field :address, size: "54", placeholder:"住所を入力" %>
+    <%= f.text_field :address, size: "54", placeholder:t('activerecord.attributes.spot.address') %>
   </div>
   <div class="field">
-    <%= f.text_field :phone, maxlength: "21", placeholder:"電話番号を入力" %>
+    <%= f.text_field :phone, maxlength: "21", placeholder:t('activerecord.attributes.spot.phone') %>
   </div>
   <div class="field">
-    <%= f.text_field :holiday, maxlength: "10", placeholder:"定休日を入力" %>
+    <%= f.text_field :holiday, maxlength: "10", placeholder:t('activerecord.attributes.spot.holiday') %>
   </div>
   <div class="field">
-    <%= f.text_field :sales_copy, size: "54", placeholder:"セールスコピーを入力" %>
+    <%= f.text_field :sales_copy, size: "54", placeholder:t('activerecord.attributes.spot.sales_copy') %>
   </div>
   <div class="field">
-    <%= f.text_area :detail_description, size: "50x10", placeholder:"詳細説明を入力" %>
+    <%= f.text_area :detail_description, size: "50x10", placeholder:t('activerecord.attributes.spot.detail_description') %>
   </div>
   <div class="field">
-    <%= f.text_area :simple_description, size: "50x2", placeholder:"簡易説明を入力" %>
+    <%= f.text_area :simple_description, size: "50x2", placeholder:t('activerecord.attributes.spot.simple_description') %>
   </div>
   <div class="actions">
-    <%= f.submit "入力内容を確認する" %>
+    <%= f.submit t('views.button.confirm') %>
   </div>
 <% end %>

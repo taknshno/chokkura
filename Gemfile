@@ -38,3 +38,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rexml'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'enum_help'
