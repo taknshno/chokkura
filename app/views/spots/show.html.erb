@@ -1,7 +1,14 @@
 <div id="notice"><%= notice %></div>
 <div>
   <strong>Image:</strong>
-  <%= image_tag @spot.image.url %>
+  <% @spot.images.each do |image| %>
+    <% if image && image.url %>
+      <%= image_tag(image.url, style: "max-width: 100px; max-height: 100px;") %>
+    <% end %>
+  <% end %>
 </div>
-<%= link_to 'Edit', edit_spot_path(@spot) %> |
+<div>
+  <%= link_to t('views.button.edit'), edit_spot_path(@spot.id) %> |
+  <%= link_to t('views.button.delete'), spot_path(@spot.id), id: "delete_#{@spot.id}", method: :delete, data: { confirm: t('views.messages.want_to_delete?') } %>
+</div>
 <%= link_to 'Back', spots_path %>

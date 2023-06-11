@@ -1,5 +1,5 @@
 class SpotsController < ApplicationController
-  #before_action :set_spot, only: %i[show edit update destroy]
+  before_action :set_spot, only: %i[show edit update destroy]
 
   def index
     @spots = Spot.all
@@ -16,7 +16,7 @@ class SpotsController < ApplicationController
   def confirm
     @spot = Spot.new(spot_params)
     if @spot.invalid?
-      flash[:danger] = "入力に誤りがあります"
+      flash[:danger] = I18n.t('flash.input_error')
       render :new
     end
   end
@@ -28,12 +28,38 @@ class SpotsController < ApplicationController
       render :new
     else
       if @spot.save
-        flash[:success] = "観光スポットを登録しました"
+        flash[:success] = I18n.t('registered_spot')
         redirect_to spots_path
       else
-        flash[:danger] = "入力に誤りがあります"
+        flash[:danger] = I18n.t('flash.input_error')
         render :new
       end
+    end
+  end
+
+  def show
+
+  end
+
+  def edit
+
+  end
+
+  def update
+    if @spot.update(spot_params)
+      flash[:success] = I18n.t('flash.updated_spot')
+      redirect_to spots_path
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    if @spot.destroy
+      flash[:success] = I18n.t('views.messages.deleted_spot')
+      redirect_to spots_path
+    else
+      render 'edit'
     end
   end
 

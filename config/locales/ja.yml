@@ -208,7 +208,9 @@ ja:
   views:
     messages:
       register_spot: '観光スポットの登録'
+      edit_spot: '観光スポットの編集'
       select_area: 'エリアの選択'
+      want_to_delete?: '削除してもよろしいですか？'
     button:
       submit: '登録する'
       confirm: '確認する'
@@ -216,3 +218,8 @@ ja:
       show: '詳細'
       edit: '編集'
       delete: '削除'
+  flash:
+    input_error: '入力に誤りがあります'
+    registered_spot: '観光スポットを登録しました'
+    updated_spot: '観光スポットを更新しました'
+    deleted_spot: '観光スポットを削除しました'
