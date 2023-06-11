@@ -28,7 +28,7 @@ class SpotsController < ApplicationController
       render :new
     else
       if @spot.save
-        flash[:success] = I18n.t('registered_spot')
+        flash[:notice] = I18n.t('flash.registered_spot')
         redirect_to spots_path
       else
         flash[:danger] = I18n.t('flash.input_error')
@@ -47,7 +47,7 @@ class SpotsController < ApplicationController
 
   def update
     if @spot.update(spot_params)
-      flash[:success] = I18n.t('flash.updated_spot')
+      flash[:notice] = I18n.t('flash.updated_spot')
       redirect_to spots_path
     else
       render 'edit'
@@ -56,7 +56,7 @@ class SpotsController < ApplicationController
 
   def destroy
     if @spot.destroy
-      flash[:success] = I18n.t('views.messages.deleted_spot')
+      flash[:notice] = I18n.t('flash.deleted_spot')
       redirect_to spots_path
     else
       render 'edit'
