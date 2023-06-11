@@ -1,0 +1,43 @@
+<% content_for(:title, "確認") %>
+<h2>Confirm</h2>
+<%= form_with(model: @spot, local: true, url: spots_path ) do |f| %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :images_cache %>
+  <%= f.hidden_field :area %>
+  <%= f.hidden_field :address %>
+  <%= f.hidden_field :phone %>
+  <%= f.hidden_field :holiday %>
+  <%= f.hidden_field :sales_copy %>
+  <%= f.hidden_field :detail_description %>
+  <%= f.hidden_field :simple_description %>
+  <div>Name: <%= @spot.name %></div>
+  <div>Image:
+    <% @spot.images.each do |image| %>
+      <%= image_tag(image.url) if image && image.url %>
+    <% end %>
+  </div>
+  <div>Area: <%= @spot.area %></div>
+  <div>Address: <%= @spot.address %></div>
+  <div>Phone: <%= @spot.phone %></div>
+  <div>Holiday: <%= @spot.holiday %></div>
+  <div>Sales Copy: <%= @spot.sales_copy %></div>
+  <div>Detail Description: <%= @spot.detail_description %></div>
+  <div>Simple Description: <%= @spot.simple_description %></div>
+  <div>
+    <%= f.submit "登録" %>
+  </div>
+<% end %>
+<%= form_with(model: @spot, url:new_spot_path, local:true, method:"get") do |f| %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :images_cache %>
+  <%= f.hidden_field :area %>
+  <%= f.hidden_field :address %>
+  <%= f.hidden_field :phone %>
+  <%= f.hidden_field :holiday %>
+  <%= f.hidden_field :sales_copy %>
+  <%= f.hidden_field :detail_description %>
+  <%= f.hidden_field :simple_description %>
+  <div>
+    <%= f.submit "戻る", name: 'back' %>
+  </div>
+<% end %>

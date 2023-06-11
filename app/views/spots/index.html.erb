@@ -1,0 +1,19 @@
+<% content_for(:title, 'chokkura') %>
+
+<%= link_to 'new', new_spot_path %>
+
+<% @spots.each do |spot| %>
+  <hr>
+  <div><%= spot.area %></div>
+  <div>
+    <%= link_to spot_path(spot.id) do %>
+      <h5><%= spot.name %></h5>
+    <% end %>
+    <% spot.images.each do |image| %>
+      <% if image && image.url %>
+        <%= image_tag(image.url, style: "max-width: 100px; max-height: 100px;") %>
+      <% end %>
+    <% end %>
+  </div>
+  <div><%= spot.simple_description %></div>
+<% end %>
