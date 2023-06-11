@@ -11,3 +11,9 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+$(document).on ("turbolinks:load", function(){
+  setTimeout(function () {
+    $("#flash_msg").hide();
+  }, 3000);
+});
