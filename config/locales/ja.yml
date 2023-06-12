@@ -219,6 +219,7 @@ ja:
       edit: '編集'
       delete: '削除'
   flash:
+    permission_denied: 'アクセスが拒否されました'
     input_error: '入力に誤りがあります'
     registered_spot: '観光スポットを登録しました'
     updated_spot: '観光スポットを更新しました'
