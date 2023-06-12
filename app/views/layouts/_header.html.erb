@@ -1,0 +1,19 @@
+<header class="header clearfix">
+  <%= link_to root_path do %>
+    <%= image_tag '/assets/title_logo.png', class: 'logo-image' %>
+  <% end %>
+  <div class="top_menu clearfix">
+    <ul>
+      <% if user_signed_in? %>
+        <% if current_user.try(:admin?) %>
+          <li><%= link_to "スポット登録", new_admin_spot_path %></li>
+        <% end %>
+        <%# <li><%= link_to "プロフィール", user_path(current_user.id)</li> %>
+        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to "サインアップ", new_user_registration_path %></li>
+        <li><%= link_to "ログイン", new_user_session_path %></li>
+      <% end %>
+    </ul>
+  </div>
+</header>

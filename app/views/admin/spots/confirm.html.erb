@@ -27,7 +27,7 @@
     <%= f.submit "登録" %>
   </div>
 <% end %>
-<%= form_with(model: @spot, url:new_spot_path, local:true, method:"get") do |f| %>
+<%= form_with(model: @spot, url:new_admin_spot_path, local:true, method:"get") do |f| %>
   <%= f.hidden_field :name %>
   <%= f.hidden_field :images_cache %>
   <%= f.hidden_field :area %>

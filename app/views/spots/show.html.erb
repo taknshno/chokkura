@@ -7,8 +7,4 @@
     <% end %>
   <% end %>
 </div>
-<div>
-  <%= link_to t('views.button.edit'), edit_spot_path(@spot.id) %> |
-  <%= link_to t('views.button.delete'), spot_path(@spot.id), id: "delete_#{@spot.id}", method: :delete, data: { confirm: t('views.messages.want_to_delete?') } %>
-</div>
 <%= link_to 'Back', spots_path %>
