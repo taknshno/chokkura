@@ -1,6 +1,7 @@
 .header {
   height: 50px;
   font-size: 0.9rem;
+  margin-bottom: 20px;
   box-shadow: 0 5px 3px 0px rgba(0, 0, 0, 0.05);
   background-color: #ffffff;
   position: relative;

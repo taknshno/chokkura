@@ -11,6 +11,7 @@ import 'bootstrap';
 import '../stylesheets/application';
 import '../stylesheets/flash_message';
 import '../stylesheets/header';
+import '../stylesheets/style';
 
 Rails.start()
 Turbolinks.start()
