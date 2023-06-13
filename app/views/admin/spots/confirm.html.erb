@@ -1,6 +1,6 @@
 <% content_for(:title, "確認") %>
 <h2>Confirm</h2>
-<%= form_with(model: @spot, local: true, url: spots_path ) do |f| %>
+<%= form_with(model: @spot, local: true, url: admin_spots_path ) do |f| %>
   <%= f.hidden_field :name %>
   <%= f.hidden_field :images_cache %>
   <%= f.hidden_field :area %>

@@ -1,0 +1,35 @@
+<% content_for(:title, form_title) %>
+
+
+
+
+<% puts %>
+<% puts "+++++++++++++++++++++++++++" %>
+<% puts tag_choose_new_or_edit %>
+<% puts "+++++++++++++++++++++++++++" %>
+<% puts %>
+
+
+
+
+
+<%= form_with(model: @tag, local: true, url: tag_choose_new_or_edit ) do |f| %>
+  <% if @tag.errors.any? %>
+    <div>
+      <h5><%= t('errors.messages.title') %></h5>
+      <div>
+        <ul>
+          <% @tag.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.text_field :name, size: 54, placeholder:t('activerecord.attributes.tag.name') %>
+  </div>
+  <div class="actions">
+    <%= f.submit t('views.button.confirm') %>
+  </div>
+<% end %>

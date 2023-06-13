@@ -11,6 +11,11 @@ Rails.application.routes.draw do
         post :confirm
       end
     end
+    resources :tags, only: [:index, :new, :create, :edit, :destroy] do
+      collection do
+        post :confirm
+      end
+    end
   end
 
   if Rails.env.development?

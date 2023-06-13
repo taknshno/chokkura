@@ -39,11 +39,9 @@ class Admin::SpotsController < ApplicationController
   end
 
   def show
-
   end
 
   def edit
-
   end
 
   def update
@@ -66,11 +64,6 @@ class Admin::SpotsController < ApplicationController
 
   private
 
-  def if_not_admin
-    flash[:danger] = I18n.t('flash.permission_denied')
-    redirect_to root_path unless current_user.admin?
-  end
-
   def set_spot
     @spot = Spot.find(params[:id])
   end
@@ -78,5 +71,12 @@ class Admin::SpotsController < ApplicationController
   def spot_params
     params.require(:spot).permit(:name, :area, :address, :phone, :holiday,
         :sales_copy, :detail_description, :simple_description, :images_cache, {images: []})
+  end
+
+  def if_not_admin
+    unless current_user.admin? then
+      flash[:danger] = I18n.t('flash.permission_denied')
+      redirect_to root_path
+    end
   end
 end
