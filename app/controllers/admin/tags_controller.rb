@@ -17,7 +17,7 @@ class Admin::TagsController < ApplicationController
   def confirm
     @tag = Tag.new(tag_params)
     if @tag.invalid?
-      flash[:danger] = I18n.t('flash.input_error')
+      flash[:danger] = t('flash.input_error')
       render :new
     end
   end
@@ -28,10 +28,10 @@ class Admin::TagsController < ApplicationController
       render :new
     else
       if @tag.save
-        flash[:notice] = I18n.t('flash.created_tag')
+        flash[:notice] = t('flash.created_tag')
         redirect_to admin_tags_path
       else
-        flash[:danger] = I18n.t('flash.input_error')
+        flash[:danger] = t('flash.input_error')
         render :new
       end
     end
@@ -42,20 +42,20 @@ class Admin::TagsController < ApplicationController
 
   def update
     if @tag.update(tag_params)
-      flash[:notice] = I18n.t('flash.edited_tag')
+      flash[:notice] = t('flash.edited_tag')
       redirect_to admin_tags_path
     else
-      flash[:danger] = I18n.t('flash.edited_tag_failed')
+      flash[:danger] = t('flash.edited_tag_failed')
       render :edit
     end
   end
 
   def destroy
     if @tag.destroy
-      flash[:notice] = I18n.t('flash.deleted_tag')
+      flash[:notice] = t('flash.deleted_tag')
       redirect_to admin_tags_path
     else
-      flash[:danger] = I18n.t('flash.delete_tag_failed')
+      flash[:danger] = t('flash.delete_tag_failed')
       redirect_to admin_tags_path
     end
   end
@@ -72,7 +72,7 @@ class Admin::TagsController < ApplicationController
 
   def if_not_admin
     unless current_user.admin? then
-      flash[:danger] = I18n.t('flash.permission_denied')
+      flash[:danger] = t('flash.permission_denied')
       redirect_to root_path
     end
   end

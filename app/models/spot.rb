@@ -1,5 +1,7 @@
 class Spot < ApplicationRecord
   mount_uploaders :images, ImageUploader
+  has_many :taggings, dependent: :destroy
+  has_many :with_tag, through: :taggings, source: :tag
 
   enum area: { 県北: 1, 県央: 2, 県西: 3, 県南: 4, 鹿行: 5 }
 

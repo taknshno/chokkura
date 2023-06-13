@@ -17,7 +17,7 @@ class Admin::SpotsController < ApplicationController
   def confirm
     @spot = Spot.new(spot_params)
     if @spot.invalid?
-      flash[:danger] = I18n.t('flash.input_error')
+      flash[:danger] = t('flash.input_error')
       render :new
     end
   end
@@ -29,10 +29,10 @@ class Admin::SpotsController < ApplicationController
       render :new
     else
       if @spot.save
-        flash[:notice] = I18n.t('flash.registered_spot')
+        flash[:notice] = t('flash.registered_spot')
         redirect_to spots_path
       else
-        flash[:danger] = I18n.t('flash.input_error')
+        flash[:danger] = t('flash.input_error')
         render :new
       end
     end
@@ -46,7 +46,7 @@ class Admin::SpotsController < ApplicationController
 
   def update
     if @spot.update(spot_params)
-      flash[:notice] = I18n.t('flash.updated_spot')
+      flash[:notice] = t('flash.updated_spot')
       redirect_to spots_path
     else
       render 'edit'
@@ -55,7 +55,7 @@ class Admin::SpotsController < ApplicationController
 
   def destroy
     if @spot.destroy
-      flash[:notice] = I18n.t('flash.deleted_spot')
+      flash[:notice] = t('flash.deleted_spot')
       redirect_to spots_path
     else
       render 'edit'
@@ -75,7 +75,7 @@ class Admin::SpotsController < ApplicationController
 
   def if_not_admin
     unless current_user.admin? then
-      flash[:danger] = I18n.t('flash.permission_denied')
+      flash[:danger] = t('flash.permission_denied')
       redirect_to root_path
     end
   end
