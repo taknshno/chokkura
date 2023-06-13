@@ -6,12 +6,12 @@ Rails.application.routes.draw do
   resources :spots, only: [:index, :show]
 
   namespace :admin do
-    resources :spots, only: [:new, :create, :edit, :destroy] do
+    resources :spots, only: [:new, :create, :edit, :update, :destroy] do
       collection do
         post :confirm
       end
     end
-    resources :tags, only: [:index, :new, :create, :edit, :destroy] do
+    resources :tags, only: [:index, :new, :create, :edit, :update, :destroy] do
       collection do
         post :confirm
       end

@@ -1,18 +1,4 @@
 <% content_for(:title, form_title) %>
-
-
-
-
-<% puts %>
-<% puts "+++++++++++++++++++++++++++" %>
-<% puts tag_choose_new_or_edit %>
-<% puts "+++++++++++++++++++++++++++" %>
-<% puts %>
-
-
-
-
-
 <%= form_with(model: @tag, local: true, url: tag_choose_new_or_edit ) do |f| %>
   <% if @tag.errors.any? %>
     <div>
