@@ -1,0 +1,7 @@
+<h3><%= t('views.messages.edit_tag') %></h3>
+<div>
+  <%= render partial: "form", locals: { form_title: t('views.messages.edit_tag')} %>
+</div>
+<div>
+<%= link_to "タグ一覧", admin_tags_path  %>
+</div>

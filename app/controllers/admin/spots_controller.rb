@@ -17,7 +17,7 @@ class Admin::SpotsController < ApplicationController
   def confirm
     @spot = Spot.new(spot_params)
     if @spot.invalid?
-      flash[:danger] = I18n.t('flash.input_error')
+      flash[:danger] = t('flash.input_error')
       render :new
     end
   end
@@ -29,26 +29,24 @@ class Admin::SpotsController < ApplicationController
       render :new
     else
       if @spot.save
-        flash[:notice] = I18n.t('flash.registered_spot')
+        flash[:notice] = t('flash.registered_spot')
         redirect_to spots_path
       else
-        flash[:danger] = I18n.t('flash.input_error')
+        flash[:danger] = t('flash.input_error')
         render :new
       end
     end
   end
 
   def show
-
   end
 
   def edit
-
   end
 
   def update
     if @spot.update(spot_params)
-      flash[:notice] = I18n.t('flash.updated_spot')
+      flash[:notice] = t('flash.updated_spot')
       redirect_to spots_path
     else
       render 'edit'
@@ -57,7 +55,7 @@ class Admin::SpotsController < ApplicationController
 
   def destroy
     if @spot.destroy
-      flash[:notice] = I18n.t('flash.deleted_spot')
+      flash[:notice] = t('flash.deleted_spot')
       redirect_to spots_path
     else
       render 'edit'
@@ -66,17 +64,19 @@ class Admin::SpotsController < ApplicationController
 
   private
 
-  def if_not_admin
-    flash[:danger] = I18n.t('flash.permission_denied')
-    redirect_to root_path unless current_user.admin?
-  end
-
   def set_spot
     @spot = Spot.find(params[:id])
   end
 
   def spot_params
-    params.require(:spot).permit(:name, :area, :address, :phone, :holiday,
-        :sales_copy, :detail_description, :simple_description, :images_cache, {images: []})
+    params.require(:spot).permit(:name, :area, :address, :phone, :holiday, :sales_copy,
+      :detail_description, :simple_description, :images_cache, {images: []}, {tag_ids: []})
+  end
+
+  def if_not_admin
+    unless current_user.admin? then
+      flash[:danger] = t('flash.permission_denied')
+      redirect_to root_path
+    end
   end
 end

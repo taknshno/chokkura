@@ -1,4 +1,15 @@
 <% content_for(:title, 'chokkura') %>
+<div>
+  <h5> タグで絞り込む</h5>
+  <%= form_with url: search_spots_path, method: :get, local: true do |f| %>
+    <div>
+      <%= f.select :key_tag_id, Tag.all.collect { |l| [l.name, l.id] }, { include_blank: "タグを選択する" }, value: @key_tag_id  %>
+    </div>
+    <div>
+      <%= f.submit t('views.button.search'), class:"form-control form-control-sm" %>
+    </div>
+  <% end %>
+</div>
 <% @spots.each do |spot| %>
   <div style="border: 1px solid black;" class="mb-2">
     <div><%= spot.area %></div>
@@ -12,6 +23,13 @@
         <% end %>
       <% end %>
       <div><%= spot.simple_description %></div>
+      <div>
+        <ul>
+          <% spot.tags.each do |tag| %>
+            <li><span class="badge bg-info"><%= tag.name %></span></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
 <% end %>

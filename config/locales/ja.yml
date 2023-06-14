@@ -3,6 +3,8 @@ ja:
   activerecord:
     models:
       spot: 観光スポット
+      tag: タグ
+      user: ユーザ
     attributes:
       spot:
         name: スポット名
@@ -14,8 +16,26 @@ ja:
         sales_copy: "セールスコピー"
         detail_description: "詳細説明"
         simple_description: "簡易説明"
-        created_at: 作成日
-        updated_at: 更新日
+        created_at: "スポット作成日時"
+        updated_at: "スポット更新日時"
+      tag:
+        name: タグ名
+        created_at: "タグ作成日時"
+        updated_at: "タグ更新日時"
+      user:
+        email: "メールアドレス"
+        encrypted_password: "パスワード"
+        reset_password_token: "パスワードリセット用トークン"
+        reset_password_sent_at: "パスワードリセット用メールの送信日時"
+        remember_created_at: "ログイン保持機能を有効化した日時"
+        sign_in_count: "ログイン回数"
+        current_sign_in_at: "直近でログインした日時"
+        last_sign_in_at: "最後にログインした日時"
+        current_sign_in_ip: "直近でログインしたIPアドレス"
+        last_sign_in_ip: "最後にログインしたIPアドレス"
+        created_at: "アカウント作成日時"
+        updated_at: "アカウント更新日時"
+        admin: "管理者権限"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -210,6 +230,9 @@ ja:
       register_spot: '観光スポットの登録'
       edit_spot: '観光スポットの編集'
       select_area: 'エリアの選択'
+      create_tag: 'タグの新規登録'
+      edit_tag: 'タグの編集'
+      tags_index: 'タグ一覧'
       want_to_delete?: '削除してもよろしいですか？'
     button:
       submit: '登録する'
@@ -224,3 +247,8 @@ ja:
     registered_spot: '観光スポットを登録しました'
     updated_spot: '観光スポットを更新しました'
     deleted_spot: '観光スポットを削除しました'
+    created_tag: 'タグを新規作成しました'
+    edited_tag: 'タグを編集しました'
+    edited_tag_failed: 'タグの編集に失敗しました'
+    deleted_tag: 'タグを削除しました'
+    delete_tag_failed: 'タグの削除に失敗しました'

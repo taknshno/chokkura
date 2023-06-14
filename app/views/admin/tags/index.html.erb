@@ -1,0 +1,16 @@
+<div class="title_area">
+  <h1><%= t('views.messages.tags_index') %></h1>
+</div>
+<% @tags.each do |tag| %>
+  <div>
+    <%= tag.name %>
+    <ul>
+      <li>
+        <%= link_to t('views.button.edit'), edit_admin_tag_path(tag.id), id: "edit_#{tag.id}" %>
+      </li>
+      <li>
+        <%= link_to t('views.button.delete'), admin_tag_path(tag.id), id: "delete_#{tag.id}", method: :delete, data: { confirm: '本当に削除しますか？' } %>
+      </li>
+    </ul>
+  </div>
+<% end %>
