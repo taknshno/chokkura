@@ -13,4 +13,6 @@ class Spot < ApplicationRecord
   validates :sales_copy, length: { maximum: 255 }
   validates :detail_description, presence: true
   validates :simple_description, length: { maximum: 255 }
+
+  scope :tag_search, -> (key_tag_id){ where(id: Tagging.where(tag_id: key_tag_id).pluck(:spot_id)) }
 end

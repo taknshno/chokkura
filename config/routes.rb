@@ -3,7 +3,11 @@ Rails.application.routes.draw do
 
   root to: 'spots#index'
 
-  resources :spots, only: [:index, :show]
+  resources :spots, only: [:index, :show] do
+    collection do
+      get :search
+    end
+  end
 
   namespace :admin do
     resources :spots, only: [:new, :create, :edit, :update, :destroy] do
