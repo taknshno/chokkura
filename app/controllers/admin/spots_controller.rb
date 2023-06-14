@@ -69,8 +69,8 @@ class Admin::SpotsController < ApplicationController
   end
 
   def spot_params
-    params.require(:spot).permit(:name, :area, :address, :phone, :holiday,
-        :sales_copy, :detail_description, :simple_description, :images_cache, {images: []})
+    params.require(:spot).permit(:name, :area, :address, :phone, :holiday, :sales_copy,
+      :detail_description, :simple_description, :images_cache, {images: []}, {tag_ids: []})
   end
 
   def if_not_admin

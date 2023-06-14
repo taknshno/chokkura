@@ -8,3 +8,14 @@
   <% end %>
 </div>
 <%= link_to 'Back', spots_path %>
+
+  <div>
+    <ul>
+      <% if user_signed_in? %>
+        <% if current_user.try(:admin?) %>
+          <li><%= link_to "編集", edit_admin_spot_path %></li>
+          <li><%= link_to "削除", admin_spot_path(@spot.id), method: :delete, data: { confirm: '本当に削除しますか？' } %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>

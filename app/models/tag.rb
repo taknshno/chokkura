@@ -1,6 +1,6 @@
 class Tag < ApplicationRecord
   has_many :taggings, dependent: :destroy
-  has_many :tagged_spots, through: :taggings, source: :spot
+  has_many :spots, through: :taggings
 
   validates :name, uniqueness: true
 end

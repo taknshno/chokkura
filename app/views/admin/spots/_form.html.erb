@@ -1,14 +1,4 @@
 <% content_for(:title, form_title) %>
-
-
-<% puts %>
-<% puts "+++++++++++++++++++++++++++" %>
-<% p spot_choose_new_or_edit %>
-<% puts "+++++++++++++++++++++++++++" %>
-<% p @spot %>
-<% puts "+++++++++++++++++++++++++++" %>
-
-
 <%= form_with(model: @spot, local: true, url: spot_choose_new_or_edit ) do |f| %>
   <% if @spot.errors.any? %>
     <div>
@@ -52,6 +42,14 @@
   </div>
   <div class="field">
     <%= f.text_area :simple_description, size: "50x2", placeholder:t('activerecord.attributes.spot.simple_description') %>
+  </div>
+  <div class="field">
+    <%= f.label :tag_name, t('activerecord.attributes.tag.name') %>
+    <ul>
+      <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |b| %>
+        <li><%= b.check_box %><span class="badge bg-info mx-1 pb-0"><%= b.label %></span></li>
+      <% end %>
+    </ul>
   </div>
   <div class="actions">
     <%= f.submit t('views.button.confirm') %>

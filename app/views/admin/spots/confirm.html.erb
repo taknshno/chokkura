@@ -10,6 +10,7 @@
   <%= f.hidden_field :sales_copy %>
   <%= f.hidden_field :detail_description %>
   <%= f.hidden_field :simple_description %>
+  <%= f.hidden_field :tag_ids %>
   <div>Name: <%= @spot.name %></div>
   <div>Image:
     <% @spot.images.each do |image| %>
@@ -23,6 +24,14 @@
   <div>Sales Copy: <%= @spot.sales_copy %></div>
   <div>Detail Description: <%= @spot.detail_description %></div>
   <div>Simple Description: <%= @spot.simple_description %></div>
+  <div>Tags: </div>
+  <div>
+    <ul>
+      <% @spot.tags.each do |tag| %>
+        <li><span class="badge bg-info"><%= tag.name %></span></li>
+      <% end %>
+    </ul>
+  </div>
   <div>
     <%= f.submit "登録" %>
   </div>
@@ -37,6 +46,7 @@
   <%= f.hidden_field :sales_copy %>
   <%= f.hidden_field :detail_description %>
   <%= f.hidden_field :simple_description %>
+  <%= f.hidden_field :tag_ids %>
   <div>
     <%= f.submit "戻る", name: 'back' %>
   </div>

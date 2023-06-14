@@ -12,6 +12,13 @@
         <% end %>
       <% end %>
       <div><%= spot.simple_description %></div>
+      <div>
+        <ul>
+          <% spot.tags.each do |tag| %>
+            <li><span class="badge bg-info"><%= tag.name %></span></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
 <% end %>
