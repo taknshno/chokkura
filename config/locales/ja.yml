@@ -252,3 +252,6 @@ ja:
     edited_tag_failed: 'タグの編集に失敗しました'
     deleted_tag: 'タグを削除しました'
     delete_tag_failed: 'タグの削除に失敗しました'
+    favorited_spot: 'スポットをお気に入りに登録しました'
+    removed_favorite_spot: 'スポットのお気に入りを解除しました'
+

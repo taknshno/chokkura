@@ -19,5 +19,6 @@ class SpotsController < ApplicationController
 
   def show
     @spot = Spot.find(params[:id])
+    @favorite = current_user.favorites.find_by(spot_id: @spot.id)
   end
 end
