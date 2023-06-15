@@ -25,6 +25,7 @@ ja:
       user:
         name: "氏名"
         email: "メールアドレス"
+        location: "所在地"
         encrypted_password: "パスワード"
         reset_password_token: "パスワードリセット用トークン"
         reset_password_sent_at: "パスワードリセット用メールの送信日時"
