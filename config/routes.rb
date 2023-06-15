@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  get 'users/show'
+  namespace :admin do
+    get 'users/index'
+    get 'users/show'
+  end
   devise_for :users
 
   root to: 'spots#index'
@@ -12,8 +15,10 @@ Rails.application.routes.draw do
 
   resources :users, :only => [:show]
 
+  resources :admin, :only => [:index]
+
   namespace :admin do
-    resources :spots, only: [:new, :create, :edit, :update, :destroy] do
+    resources :spots, only: [:index, :new, :create, :edit, :update, :destroy] do
       collection do
         post :confirm
       end
@@ -21,6 +26,11 @@ Rails.application.routes.draw do
     resources :tags, only: [:index, :new, :create, :edit, :update, :destroy] do
       collection do
         post :confirm
+      end
+    end
+    resources :users, :only => [:index, :show, :new, :edit] do
+      member do
+        get :control
       end
     end
   end

@@ -1,0 +1,46 @@
+<% content_for(:title, t('views.messages.users_index')) %>
+<div class="title_area">
+<h2><%= t('views.messages.users_index') %></h2>
+</div>
+<div class="admin_area">
+<table>
+    <tr>
+      <th><%= t("activerecord.attributes.user.id") %></th>
+      <th><%= t("activerecord.attributes.user.name") %></th>
+      <th><%= t("activerecord.attributes.user.email") %></th>
+      <th><%= t("activerecord.attributes.user.admin") %></th>
+      <th><%= t("views.messages.control") %></th>
+    </tr>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <% if user.id == current_user.id %>
+          <td><strong><%= user.name %></strong></td>
+        <% else %>
+          <td><%= user.name %></td>
+        <% end %>
+        <td><%= user.email %></td>
+        <td><%= user.admin %></td>
+        <td>
+          <div class="admin_control_button">
+            <ul>
+              <li>
+                <% if user.admin? %>
+                  <%= link_to t('views.button.ensure_admin'), control_admin_user_path(user.id, act: "ensure"), id: "ensure_#{user.id}", class: "btn btn-light btn-sm mb-0" %>
+                <% else %>
+                  <%= link_to t('views.button.grant_admin'), control_admin_user_path(user.id, act: "grant"), id: "grant_#{user.id}", class: "btn btn-light btn-sm mb-0" %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to t('views.button.show'), user_path(user.id), id: "show_#{user.id}", class: "btn btn-light btn-sm mb-0" %>
+              </li>
+              <li>
+                <%= link_to t('views.button.delete'), admin_user_path(user.id), id: "delete_#{user.id}", method: :delete, class: "btn btn-danger btn-sm mb-0", data: { confirm: '本当に削除しますか？' } %>
+              </li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

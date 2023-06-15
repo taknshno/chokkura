@@ -6,15 +6,13 @@
     <ul>
       <% if user_signed_in? %>
         <li><strong><%= link_to current_user.name, user_path(current_user.id) %></strong></li>
-        <% if current_user.try(:admin?) %>
-          <li><%= link_to "スポット登録", new_admin_spot_path %></li>
-          <li><%= link_to "タグ登録", new_admin_tag_path %></li>
+        <% if current_user.admin? %>
+          <li><%= link_to t('views.messages.admin_menu'), admin_index_path %></li>
         <% end %>
-        <%# <li><%= link_to "プロフィール", user_path(current_user.id)</li> %>
-        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to t('views.messages.logout'), destroy_user_session_path, method: :delete %></li>
       <% else %>
-        <li><%= link_to "サインアップ", new_user_registration_path %></li>
-        <li><%= link_to "ログイン", new_user_session_path %></li>
+        <li><%= link_to t('views.messages.signup'), new_user_registration_path %></li>
+        <li><%= link_to t('views.messages.login'), new_user_session_path %></li>
       <% end %>
     </ul>
   </div>
