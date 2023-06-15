@@ -1,2 +1,46 @@
 <h4><%= @user.name %>のページ</h4>
-
+<div>
+  <h5>ユーザ情報</h5>
+  <ul>
+    <li>
+      <h4>名前</h4>
+      <span><%= @user.name %></span>
+    </li>
+    <li>
+      <h4>メールアドレス</h4>
+      <span><%= @user.email %></span>
+    </li>
+    <li>
+      <h4>所在地</h4>
+      <span>++++++++++++未定義+++++++++++++</span>
+    </li>
+    <li>
+      <h4>LINE連携</h4>
+      <span>++++++++++++未定義+++++++++++++</span>
+    </li>
+    <li>
+      <%= link_to "プロフィール編集", edit_user_registration_path, method: :get %>
+    </li>
+  </ul>
+</div>
+<hr>
+<div>
+  <h5>お気に入りスポット</h5>(<%= @user.favorite_spots.count %>件)
+  <div>
+    <% @user.favorite_spots.each do |spot| %>
+      <div style="border: 1px solid black;" class="mb-2">
+        <div><%= spot.area %></div>
+        <div>
+          <%= link_to spot_path(spot.id) do %>
+            <h5><%= spot.name %></h5>
+          <% end %>
+          <% spot.images.each do |image| %>
+            <% if image && image.url %>
+              <%= image_tag(image.url, style: "max-width: 100px; max-height: 100px;") %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
