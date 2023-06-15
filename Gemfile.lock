@@ -97,6 +97,10 @@ GEM
     devise-i18n (1.11.0)
       devise (>= 4.9.0)
     diff-lcs (1.5.0)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     enum_help (0.0.19)
       activesupport (>= 3.0.0)
     erubi (1.12.0)
@@ -108,8 +112,10 @@ GEM
     faker (3.2.0)
       i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
+    geocoder (1.8.1)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    gmaps4rails (2.1.2)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
@@ -294,9 +300,12 @@ DEPENDENCIES
   carrierwave
   devise
   devise-i18n
+  dotenv-rails
   enum_help
   factory_bot_rails
   faker
+  geocoder
+  gmaps4rails
   jbuilder (~> 2.7)
   launchy
   letter_opener_web

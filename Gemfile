@@ -42,3 +42,5 @@ gem 'mini_magick'
 gem 'enum_help'
 gem 'devise'
 gem 'devise-i18n'
+gem "geocoder"
+gem "dotenv-rails"
