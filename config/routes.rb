@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/show'
   devise_for :users
 
   root to: 'spots#index'
@@ -8,6 +9,8 @@ Rails.application.routes.draw do
       get :search
     end
   end
+
+  resources :users, :only => [:show]
 
   namespace :admin do
     resources :spots, only: [:new, :create, :edit, :update, :destroy] do
