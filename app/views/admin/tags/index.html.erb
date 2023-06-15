@@ -1,16 +1,33 @@
+<% content_for(:title, t('views.messages.tags_index')) %>
 <div class="title_area">
-  <h1><%= t('views.messages.tags_index') %></h1>
+  <h2><%= t('views.messages.tags_index') %></h2>
 </div>
-<% @tags.each do |tag| %>
-  <div>
-    <%= tag.name %>
-    <ul>
-      <li>
-        <%= link_to t('views.button.edit'), edit_admin_tag_path(tag.id), id: "edit_#{tag.id}" %>
-      </li>
-      <li>
-        <%= link_to t('views.button.delete'), admin_tag_path(tag.id), id: "delete_#{tag.id}", method: :delete, data: { confirm: '本当に削除しますか？' } %>
-      </li>
-    </ul>
-  </div>
-<% end %>
+<div class="admin_area">
+<table>
+  <tr>
+    <th><%= t("activerecord.attributes.tag.id") %></th>
+    <th><%= t("activerecord.attributes.tag.name") %></th>
+    <th><%= t("views.messages.tagged_spot_count") %></th>
+    <th><%= t("views.messages.control") %></th>
+  </tr>
+  <% @tags.each do |tag| %>
+    <tr>
+      <td><%= tag.id %></td>
+      <td><%= tag.name %></td>
+      <td><%= tag.spots.count %></td>
+      <td>
+        <div class="admin_control_button">
+          <ul>
+            <li>
+              <%= link_to t('views.button.edit'), edit_admin_tag_path(tag.id), id: "edit_#{tag.id}", class: "btn btn-light btn-sm mb-0" %>
+            </li>
+            <li>
+              <%= link_to t('views.button.delete'), admin_tag_path(tag.id), id: "delete_#{tag.id}", method: :delete, class: "btn btn-danger btn-sm mb-0", data: { confirm: t('views.messages.want_to_delete?') } %>
+            </li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+</table>
+</div>

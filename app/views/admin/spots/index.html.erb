@@ -1,0 +1,38 @@
+<% content_for(:title, t('views.messages.spots_index')) %>
+<div class="title_area">
+  <h2><%= t('views.messages.spots_index') %></h2>
+</div>
+<div class="admin_area">
+  <table>
+    <tr>
+      <th><%= t("activerecord.attributes.spot.id") %></th>
+      <th><%= t("activerecord.attributes.spot.name") %></th>
+      <th><%= t("activerecord.attributes.spot.area") %></th>
+      <th><%= t("views.messages.with_tags_count") %></th>
+      <th><%= t("views.messages.control") %></th>
+    </tr>
+    <% @spots.each do |spot| %>
+      <tr>
+        <td><%= spot.id %></td>
+        <td><%= spot.name %></td>
+        <td><%= spot.area %></td>
+        <td><%= spot.tags.count %></td>
+        <td>
+          <div class="admin_control_button">
+            <ul>
+              <li>
+                <%= link_to t('views.button.show'), spot_path(spot.id), id: "show_#{spot.id}", class: "btn btn-light btn-sm mb-0" %>
+              </li>
+              <li>
+                <%= link_to t('views.button.edit'), edit_admin_spot_path(spot.id), id: "edit_#{spot.id}", class: "btn btn-light btn-sm mb-0" %>
+              </li>
+              <li>
+                <%= link_to t('views.button.delete'), admin_spot_path(spot.id), id: "delete_#{spot.id}", method: :delete, class: "btn btn-danger btn-sm mb-0", data: { confirm: t('views.messages.want_to_delete?') } %>
+              </li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

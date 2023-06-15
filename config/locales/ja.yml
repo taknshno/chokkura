@@ -2,12 +2,13 @@
 ja:
   activerecord:
     models:
-      spot: 観光スポット
-      tag: タグ
-      user: ユーザ
+      spot: "観光スポット"
+      tag: "タグ"
+      user: "ユーザ"
     attributes:
       spot:
-        name: スポット名
+        id: "ID"
+        name: "スポット名"
         images: "スポットイメージ"
         area: "所在エリア"
         address: "住所"
@@ -19,10 +20,12 @@ ja:
         created_at: "スポット作成日時"
         updated_at: "スポット更新日時"
       tag:
-        name: タグ名
+        id: "ID"
+        name: "タグ名"
         created_at: "タグ作成日時"
         updated_at: "タグ更新日時"
       user:
+        id: "ID"
         name: "氏名"
         email: "メールアドレス"
         location: "所在地"
@@ -229,13 +232,34 @@ ja:
     pm: 午後
   views:
     messages:
+      spots_index: '観光スポット一覧'
       register_spot: '観光スポットの登録'
       edit_spot: '観光スポットの編集'
       select_area: 'エリアの選択'
       create_tag: 'タグの新規登録'
       edit_tag: 'タグの編集'
       tags_index: 'タグ一覧'
+      users_index: 'ユーザ一覧'
+      admin_menu: '管理者メニュー'
       want_to_delete?: '削除してもよろしいですか？'
+      tagged_spot_count: '紐付けスポット数'
+      with_tags_count: '紐付けタグ数'
+      watch_users_index: 'ユーザ一覧を見る'
+      create_user: 'ユーザを追加する'
+      watch_spots_index: 'スポット一覧を見る'
+      create_spot: 'スポットを追加する'
+      watch_tags_index: 'タグ一覧を見る'
+      create_tag: 'タグを追加する'
+      signup: 'ユーザ登録'
+      login: 'ログイン'
+      logout: 'ログアウト'
+      control: '操作'
+      back: '戻る'
+      grant_admin: "管理者権限を付与しました"
+      ensure_admin: "管理者権限を抹消しました"
+      already_admin: "すでに管理者権限があります"
+      already_not_admin: "すでに管理者権限はありません"
+      change_admin_failed: "管理者権限の変更に失敗しました"
     button:
       submit: '登録する'
       confirm: '確認する'
@@ -243,6 +267,9 @@ ja:
       show: '詳細'
       edit: '編集'
       delete: '削除'
+      grant_admin: '権限付与'
+      ensure_admin: '権限抹消'
+      back: '戻る'
   flash:
     permission_denied: 'アクセスが拒否されました'
     input_error: '入力に誤りがあります'
