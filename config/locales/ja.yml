@@ -23,7 +23,9 @@ ja:
         created_at: "タグ作成日時"
         updated_at: "タグ更新日時"
       user:
+        name: "氏名"
         email: "メールアドレス"
+        location: "所在地"
         encrypted_password: "パスワード"
         reset_password_token: "パスワードリセット用トークン"
         reset_password_sent_at: "パスワードリセット用メールの送信日時"
@@ -252,3 +254,6 @@ ja:
     edited_tag_failed: 'タグの編集に失敗しました'
     deleted_tag: 'タグを削除しました'
     delete_tag_failed: 'タグの削除に失敗しました'
+    favorited_spot: 'スポットをお気に入りに登録しました'
+    removed_favorite_spot: 'スポットのお気に入りを解除しました'
+

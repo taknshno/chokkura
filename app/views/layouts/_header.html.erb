@@ -5,6 +5,7 @@
   <div class="top_menu clearfix">
     <ul>
       <% if user_signed_in? %>
+        <li><strong><%= link_to current_user.name, user_path(current_user.id) %></strong></li>
         <% if current_user.try(:admin?) %>
           <li><%= link_to "スポット登録", new_admin_spot_path %></li>
           <li><%= link_to "タグ登録", new_admin_tag_path %></li>
