@@ -5,6 +5,9 @@ class Spot < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :users, through: :favorites, source: :user
 
+  geocoded_by :name
+  after_validation :geocode, if: :address_changed?
+
   enum area: { 県北: 1, 県央: 2, 県西: 3, 県南: 4, 鹿行: 5 }
 
   validates :name, presence: true, uniqueness: true
