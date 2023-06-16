@@ -1,4 +1,53 @@
 <% content_for(:title, 'chokkura') %>
+
+<div class="key_visual_area">
+  <%= image_tag '/assets/key_visual1.png', class: "key_image" %>
+	<%= image_tag '/assets/key_visual2.jpg', class: "key_image"  %>
+  <%= image_tag '/assets/key_visual3.jpg', class: "key_image"  %>
+  <%= image_tag '/assets/key_visual4.jpg', class: "key_image"  %>
+  <div class="copy">
+    <h4>いばらき、いちど来てみで！</h4>
+    <span>
+      海、山、湖、自然あふれる場所。<br />
+      都心からでも思い立ったらすぐ行けます。<br />
+      ちょっとしたお出かけ気分で行ってみませんか？
+    </span>
+  </div>
+</div>
+
+<div class="container mt-4">
+  <div class="p-0">こんなとこあっぺよ！</div>
+  <div class="row justify-content-center">
+      <% @spots.each do |spot| %>
+        <div class="card col-4 mb-4 p-0">
+          <h6 class="card-header p-2">
+            <%= spot.area %>
+          </h6>
+          <div class="row g-0">
+            <div class="col-md-4">
+              <% if spot.images.first && spot.images.first.url %>
+                <%= image_tag(spot.images.first.url, style: "max-width: 100px; max-height: 100px;") %>
+              <% end %>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title"><%= spot.name %></h5>
+                <p class="card-text"><%= spot.simple_description %></p>
+                <p class="card-text">
+                  <ul>
+                    <% spot.tags.each do |tag| %>
+                      <li><span class="badge bg-info text-muted"><%= tag.name %></span></li>
+                    <% end %>
+                  </ul>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+  </div>
+</div>
+
 <div>
   <h5> タグで絞り込む</h5>
   <%= form_with url: search_spots_path, method: :get, local: true do |f| %>
@@ -10,26 +59,3 @@
     </div>
   <% end %>
 </div>
-<% @spots.each do |spot| %>
-  <div style="border: 1px solid black;" class="mb-2">
-    <div><%= spot.area %></div>
-    <div>
-      <%= link_to spot_path(spot.id) do %>
-        <h5><%= spot.name %></h5>
-      <% end %>
-      <% spot.images.each do |image| %>
-        <% if image && image.url %>
-          <%= image_tag(image.url, style: "max-width: 100px; max-height: 100px;") %>
-        <% end %>
-      <% end %>
-      <div><%= spot.simple_description %></div>
-      <div>
-        <ul>
-          <% spot.tags.each do |tag| %>
-            <li><span class="badge bg-info"><%= tag.name %></span></li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
-<% end %>
