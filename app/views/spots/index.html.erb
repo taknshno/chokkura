@@ -1,10 +1,9 @@
 <% content_for(:title, 'chokkura') %>
-
 <div class="key_visual_area">
   <%= image_tag '/assets/key_visual1.png', class: "key_image" %>
-	<%= image_tag '/assets/key_visual2.jpg', class: "key_image"  %>
+  <%= image_tag '/assets/key_visual2.jpg', class: "key_image"  %>
   <%= image_tag '/assets/key_visual3.jpg', class: "key_image"  %>
-  <%= image_tag '/assets/key_visual4.jpg', class: "key_image"  %>
+  <%= image_tag '/assets/key_visual4.png', class: "key_image"  %>
   <div class="copy">
     <h4>いばらき、いちど来てみで！</h4>
     <span>
@@ -14,48 +13,55 @@
     </span>
   </div>
 </div>
-
 <div class="container mt-4">
-  <div class="p-0">こんなとこあっぺよ！</div>
-  <div class="row justify-content-center">
-      <% @spots.each do |spot| %>
-        <div class="card col-4 mb-4 p-0">
-          <h6 class="card-header p-2">
-            <%= spot.area %>
-          </h6>
-          <div class="row g-0">
-            <div class="col-md-4">
-              <% if spot.images.first && spot.images.first.url %>
-                <%= image_tag(spot.images.first.url, style: "max-width: 100px; max-height: 100px;") %>
+  <div class="p-0 mb-4 spot_index_header">
+    <%= image_tag '/assets/spot_title.png' %>
+    <div class="spot_search_area row">
+      <%= form_with url: search_spots_path, method: :get, local: true do |f| %>
+        <div class="col-auto">
+          <%= f.select :key_tag_id, Tag.all.collect { |l| [l.name, l.id] }, { include_blank: t('views.messages.select_tag') }, class:"form-control-lg", value: @key_tag_id  %>
+        </div>
+        <div class="col-auto pl-1">
+          <%= f.submit t('views.button.search'), class:"form-control form-control-lg" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row justify-content-start">
+    <% @spots.each do |spot| %>
+      <div class=" col-12 col-md-6 col-lg-4">
+        <div class="place-card">
+          <div class="place-card__img">
+            <% if spot.images.first && spot.images.first.url %>
+              <%= link_to spot_path(spot.id) do %>
+                <%= image_tag(spot.images.first.url) %>
               <% end %>
+            <% end %>
+          </div>
+          <div class="place-card__content">
+            <h3 class="place-card__content_header">
+              <%= link_to spot_path(spot.id) do %>
+                <%= spot.name %>
+              <% end %>
+              <% if user_signed_in? %>
+                <% if spot.favorited_by?(current_user)  %>
+                  <%= link_to favorite_path(spot), method: :delete do %>
+                    <span class="bi bi-heart-fill" title="<%= t('views.messages.remove_favorite') %>"></span><% end %>
+                <% else %>
+                  <%= link_to favorites_path(spot_id: spot.id), method: :post do %>
+                    <span class="bi bi-heart" title="<%= t('views.messages.add_favorite') %>"></span><% end %>
+                <% end %>
+              <% end %>
+            </h3>
+            <div class="flex-center">
+              <p class="mb-0"><span class="text-muted"><%= spot.simple_description %></span></p>
             </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title"><%= spot.name %></h5>
-                <p class="card-text"><%= spot.simple_description %></p>
-                <p class="card-text">
-                  <ul>
-                    <% spot.tags.each do |tag| %>
-                      <li><span class="badge bg-info text-muted"><%= tag.name %></span></li>
-                    <% end %>
-                  </ul>
-                </p>
-              </div>
+            <div class="flex-center">
+              <p class="mb-0"><span class="text-muted"><%= tag.name %></span></p>
             </div>
           </div>
         </div>
-      <% end %>
+      </div>
+    <% end %>
   </div>
-</div>
-
-<div>
-  <h5> タグで絞り込む</h5>
-  <%= form_with url: search_spots_path, method: :get, local: true do |f| %>
-    <div>
-      <%= f.select :key_tag_id, Tag.all.collect { |l| [l.name, l.id] }, { include_blank: "タグを選択する" }, value: @key_tag_id  %>
-    </div>
-    <div>
-      <%= f.submit t('views.button.search'), class:"form-control form-control-sm" %>
-    </div>
-  <% end %>
 </div>

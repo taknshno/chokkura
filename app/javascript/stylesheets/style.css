@@ -1,5 +1,14 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  margin: 0 auto;
+}
+
 .main-wrapper {
-  margin-top: 0px;
+  margin-top: 20px;
 }
 
 .title_area h2 {
@@ -27,7 +36,7 @@
 }
 
 .admin_area td {
-  font-size: 0.8rem;
+  font-size: 1.3rem;
   padding: 6px 10px;
   text-align: center;
   border-top: 1px solid #cccccc;

@@ -255,6 +255,9 @@ ja:
       logout: 'ログアウト'
       control: '操作'
       back: '戻る'
+      select_tag: "タグを選択する"
+      add_favorite: "お気に入りを解除する"
+      remove_favorite: "お気に入りを解除する"
       grant_admin: "管理者権限を付与しました"
       ensure_admin: "管理者権限を抹消しました"
       already_admin: "すでに管理者権限があります"
