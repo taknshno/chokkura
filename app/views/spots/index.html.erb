@@ -15,7 +15,7 @@
 </div>
 <div class="container mt-4">
   <div class="p-0 mb-4 spot_index_header">
-    <%= image_tag '/assets/spot_title.png' %>
+    <%= image_tag '/assets/spot_title.jpg' %>
     <div class="spot_search_area row">
       <%= form_with url: search_spots_path, method: :get, local: true do |f| %>
         <div class="col-auto">
@@ -27,7 +27,15 @@
       <% end %>
     </div>
   </div>
-  <div class="row justify-content-start">
+
+    <% if @spots.empty? %>
+    <div class="row justify-content-center">
+      <div class="empty-wrapper">
+          <%= image_tag '/assets/no_spot.png', class: 'no-image' %>
+      </div>
+    </div>
+    <% else %>
+      <div class="row justify-content-start">
     <% @spots.each do |spot| %>
       <div class=" col-12 col-md-6 col-lg-4">
         <div class="place-card area-<%= spot.area_before_type_cast %>">
@@ -66,5 +74,7 @@
         </div>
       </div>
     <% end %>
-  </div>
+      </div>
+    <% end %>
+
 </div>

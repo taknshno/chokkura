@@ -104,6 +104,7 @@ body {
 .footer {
   width: 100%;
   height: 100%;
+  margin-top:20px;
   padding: 20px 0;
   background-color: #f5f5f5;
   display: block;
@@ -115,4 +116,13 @@ body {
   font-size: 0.8rem;
   color: #737373;
   margin: 0 auto;
+}
+
+.empty-wrapper h2 {
+  color: gray;
+}
+
+.no-image {
+  max-width: 300px;
+  max-height: 300px;
 }
