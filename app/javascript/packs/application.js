@@ -10,8 +10,9 @@ import "channels"
 import 'bootstrap';
 import '../stylesheets/application';
 import '../stylesheets/flash_message';
-import '../stylesheets/header';
 import '../stylesheets/style';
+import '../stylesheets/top';
+import '../stylesheets/cards';
 
 Rails.start()
 Turbolinks.start()

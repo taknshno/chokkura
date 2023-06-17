@@ -1,35 +1,79 @@
-<% content_for(:title, 'chokkura') %>
-<div>
-  <h5> タグで絞り込む</h5>
-  <%= form_with url: search_spots_path, method: :get, local: true do |f| %>
-    <div>
-      <%= f.select :key_tag_id, Tag.all.collect { |l| [l.name, l.id] }, { include_blank: "タグを選択する" }, value: @key_tag_id  %>
+<% content_for(:title, '茨城にちょっと行ってみたくなる :::ちょっくら茨城:::') %>
+<div class="key_visual_area">
+  <%= image_tag '/assets/key_visual1.png', class: "key_image" %>
+  <%= image_tag '/assets/key_visual2.jpg', class: "key_image"  %>
+  <%= image_tag '/assets/key_visual3.jpg', class: "key_image"  %>
+  <%= image_tag '/assets/key_visual4.png', class: "key_image"  %>
+  <div class="copy">
+    <h4><%= t('views.messages.key_title') %></h4>
+    <span><%= t('views.messages.key_text_html') %></span>
+  </div>
+</div>
+<div class="container mt-4">
+  <div class="p-0 spot_index_header">
+    <%= image_tag '/assets/spot_title.jpg' %>
+    <div class="spot_search_area row">
+      <%= form_with url: search_spots_path, method: :get, local: true do |f| %>
+        <div class="col-auto">
+          <%= f.select :key_tag_id, Tag.all.collect { |l| ["#{l.name}(#{l.spots.count})", l.id] }, { include_blank: t('views.messages.select_tag'), selected: params[:key_tag_id] }, class:"form-control-lg", value: @key_tag_id  %>
+        </div>
+        <div class="col-auto pl-1">
+          <%= f.submit t('views.button.search'), class:"form-control form-control-lg" %>
+        </div>
+      <% end %>
     </div>
-    <div>
-      <%= f.submit t('views.button.search'), class:"form-control form-control-sm" %>
+  </div>
+  <% if @spots.empty? %>
+    <div class="row justify-content-center">
+      <div class="empty-wrapper">
+        <%= image_tag '/assets/no_spot.png', class: 'no-image' %>
+      </div>
+    </div>
+  <% else %>
+    <div class="row justify-content-start">
+      <% @spots.each do |spot| %>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="place-card__header">
+            <%= spot.area %>
+          </div>
+          <div class="place-card area-<%= spot.area_before_type_cast %>">
+            <div class="place-card__img">
+              <% if spot.images.first && spot.images.first.url %>
+                <%= link_to spot_path(spot.id) do %>
+                  <%= image_tag(spot.images.first.url) %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="place-card__content">
+              <h3 class="place-card__content_header">
+                <%= link_to spot_path(spot.id) do %>
+                  <%= spot.name %>
+                <% end %>
+                <% if user_signed_in? %>
+                  <% if spot.favorited_by?(current_user)  %>
+                    <%= link_to favorite_path(spot), method: :delete do %>
+                      <span class="bi bi-heart-fill" title="<%= t('views.messages.remove_favorite') %>"></span><% end %>
+                  <% else %>
+                    <%= link_to favorites_path(spot_id: spot.id), method: :post do %>
+                      <span class="bi bi-heart" title="<%= t('views.messages.add_favorite') %>"></span><% end %>
+                  <% end %>
+                <% end %>
+              </h3>
+              <div class="place-card__content_text">
+                <span><%= spot.simple_description %></span>
+              </div>
+              <div class="place-card__tags">
+                <p class="mb-0 text-muted">
+                  <% spot.tags.each_with_index do |tag, index| %>
+                    <%= link_to tag.name, search_spots_path(key_tag_id: tag.id) %>
+                    <%= ',' unless index == spot.tags.size - 1 %>
+                  <% end %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
   <% end %>
 </div>
-<% @spots.each do |spot| %>
-  <div style="border: 1px solid black;" class="mb-2">
-    <div><%= spot.area %></div>
-    <div>
-      <%= link_to spot_path(spot.id) do %>
-        <h5><%= spot.name %></h5>
-      <% end %>
-      <% spot.images.each do |image| %>
-        <% if image && image.url %>
-          <%= image_tag(image.url, style: "max-width: 100px; max-height: 100px;") %>
-        <% end %>
-      <% end %>
-      <div><%= spot.simple_description %></div>
-      <div>
-        <ul>
-          <% spot.tags.each do |tag| %>
-            <li><span class="badge bg-info"><%= tag.name %></span></li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
-<% end %>

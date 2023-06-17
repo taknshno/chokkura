@@ -1,5 +1,17 @@
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  font-size:1.6rem;
+  line-height: 2;
+  margin: 0 auto;
+}
+
 .main-wrapper {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .title_area h2 {
@@ -27,7 +39,7 @@
 }
 
 .admin_area td {
-  font-size: 0.8rem;
+  font-size: 1.3rem;
   padding: 6px 10px;
   text-align: center;
   border-top: 1px solid #cccccc;
@@ -49,4 +61,71 @@
   float: left;
   padding: 8px;
   list-style: none;
+}
+
+.header {
+  height: 50px;
+  font-size: 0.9rem;
+  box-shadow: 0 5px 3px 0px rgba(0, 0, 0, 0.05);
+  background-color: #ffffff;
+  position: relative;
+  z-index    : 20;
+}
+
+.logo-image {
+  float: left;
+  max-height: 40px;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+.top_menu {
+  float: right;
+}
+
+.top_menu ul {
+  margin: 0;
+  padding: 0;
+}
+
+.top_menu li {
+  font-size: 1.5rem;
+  line-height: 50px;
+  padding: 0px 12px;
+  float: left;
+  width: auto;
+  list-style: none;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.footer {
+  width: 100%;
+  height: auto;
+  margin-top: 20px;
+  padding: 20px 0;
+  background-color: #f5f5f5;
+	position:sticky;
+	top:100vh;
+  text-align: center;
+}
+
+.copyright {
+  max-width: 980px;
+  font-size: 0.8rem;
+  color: #737373;
+  margin: 0 auto;
+}
+
+.empty-wrapper h2 {
+  color: gray;
+}
+
+.no-image {
+  max-width: 300px;
+  max-height: 300px;
 }

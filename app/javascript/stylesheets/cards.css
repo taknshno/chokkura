@@ -1,0 +1,108 @@
+.place-card {
+	background: #fff;
+	margin-bottom: 25px;
+	overflow: hidden;
+	box-shadow: 0 0px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 県北 */
+.area-1 {
+	border-left: solid 3px #9ccc9c !important;
+}
+
+/* 県央 */
+.area-2 {
+	border-left: solid 3px #ceceff !important;
+}
+
+/* 県西 */
+.area-3 {
+	border-left: solid 3px #ffce9c !important;
+}
+
+/* 県南 */
+.area-4 {
+	border-left: solid 3px #ffcece !important;
+}
+
+/* 鹿行 */
+.area-5 {
+	border-left: solid 3px #9cceff !important;
+}
+
+.place-card__header {
+	background: #fff;
+	width: 80px;
+	font-weight: 600;
+	letter-spacing: 0.4rem;
+	text-align: center;
+	padding: 6px 12px 6px;
+	box-shadow: 0 0px 8px rgba(0, 0, 0, 0.1);
+}
+
+.place-card__img {
+  overflow: hidden;
+  display: block;
+}
+
+.place-card__img img {
+	display: block;
+	height: 200px;
+	width: 100%;
+	object-fit: cover;
+	transition: all, 0.3s;
+}
+
+.place-card__img:hover img {
+  transform: scale(1.1);
+}
+
+.place-card__content {
+	padding: 20px 20px 5px 20px;
+}
+
+.place-card__content_header {
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.place-card__content_header h5{
+	font-size: 3rem;
+}
+
+.place-card__content_text {
+	padding-top: 6px;
+	height: 80px;
+	display: flex;
+  align-items: flex-start;
+}
+
+.flex-center {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.place-card__tags {
+  padding-top: 20px;
+}
+
+.place-card__tags a {
+	color: #6c757d !important;
+}
+
+.place-card__tags ul {
+  margin: 0;
+  padding: 0;
+}
+
+.place-card__tags li {
+  font-size: 1.3rem;
+  line-height: 50px;
+  padding: 0 5px 0 0;
+  float: left;
+  width: auto;
+  list-style: none;
+}

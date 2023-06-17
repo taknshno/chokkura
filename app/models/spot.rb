@@ -19,5 +19,9 @@ class Spot < ApplicationRecord
   validates :detail_description, presence: true
   validates :simple_description, length: { maximum: 255 }
 
+  def favorited_by?(user)
+    favorites.where(user_id: user.id).exists?
+  end
+
   scope :tag_search, -> (key_tag_id){ where(id: Tagging.where(tag_id: key_tag_id).pluck(:spot_id)) }
 end
