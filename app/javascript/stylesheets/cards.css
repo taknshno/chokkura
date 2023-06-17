@@ -1,34 +1,33 @@
 .place-card {
 	background: #fff;
 	margin-bottom: 25px;
-	border-radius: 5px;
 	overflow: hidden;
 	box-shadow: 0 0px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* 県北 */
 .area-1 {
-	box-shadow: 0 0px 8px #9ccc9c !important;
+	border-left: solid 2px #9ccc9c !important;
 }
 
 /* 県央 */
 .area-2 {
-	box-shadow: 0 0px 8px #ceceff !important;
+	border-left: solid 2px #ceceff !important;
 }
 
 /* 県西 */
 .area-3 {
-	box-shadow: 0 0px 8px #ffce9c !important;
+	border-left: solid 2px #ffce9c !important;
 }
 
 /* 県南 */
 .area-4 {
-	box-shadow: 0 0px 8px #ffcece !important;
+	border-left: solid 2px #ffcece !important;
 }
 
 /* 鹿行 */
 .area-5 {
-	box-shadow: 0 0px 8px #9cceff !important;
+	border-left: solid 2px #9cceff !important;
 }
 
 .place-card__img {
