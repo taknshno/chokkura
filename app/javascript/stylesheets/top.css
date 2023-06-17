@@ -61,6 +61,7 @@
 
 .spot_index_header {
   display: flex;
+  margin: 0 0 30px;
   align-items: flex-end;
   justify-content: space-between;
 }
