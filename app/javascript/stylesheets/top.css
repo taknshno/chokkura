@@ -76,5 +76,6 @@
 
 .spot_search_area div {
   float: left;
-
+  display: flex;
+  align-items: flex-end;
 }

@@ -16,6 +16,10 @@
   },
   "version": "0.1.0",
   "devDependencies": {
-    "webpack-dev-server": "^3"
+    "webpack-dev-server": "^3",
+    "sass": "1.32.12"
+  },
+  "resolutions": {
+      "sass": "1.32.12"
   }
 }

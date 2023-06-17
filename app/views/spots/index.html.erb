@@ -19,7 +19,7 @@
     <div class="spot_search_area row">
       <%= form_with url: search_spots_path, method: :get, local: true do |f| %>
         <div class="col-auto">
-          <%= f.select :key_tag_id, Tag.all.collect { |l| [l.name, l.id] }, { include_blank: t('views.messages.select_tag') }, class:"form-control-lg", value: @key_tag_id  %>
+          <%= f.select :key_tag_id, Tag.all.collect { |l| [l.name, l.id] }, { include_blank: t('views.messages.select_tag'), selected: params[:key_tag_id] }, class:"form-control-lg", value: @key_tag_id  %>
         </div>
         <div class="col-auto pl-1">
           <%= f.submit t('views.button.search'), class:"form-control form-control-lg" %>
@@ -30,7 +30,10 @@
   <div class="row justify-content-start">
     <% @spots.each do |spot| %>
       <div class=" col-12 col-md-6 col-lg-4">
-        <div class="place-card">
+        <div class="place-card area-<%= spot.area_before_type_cast %>">
+          <div class="place-card__header">
+            <%= spot.area %>
+          </div>
           <div class="place-card__img">
             <% if spot.images.first && spot.images.first.url %>
               <%= link_to spot_path(spot.id) do %>
