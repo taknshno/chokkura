@@ -34,39 +34,40 @@
         <div class="spot_basic_title col-12 py-4 px-3">
           <h3><%= @spot.name %></h3>
         </div>
-        <div class="spot_basic_attr col-12 py-1 px-2">
+        <div class="spot_basic_attr col-12 py-1 px-3">
           <h3><span class="badge bg-light"><%= t('activerecord.attributes.spot.address') %></span></h3>
         </div>
-        <div class="spot_basic_val col-12 py-1 px-4">
+        <div class="spot_basic_val col-12 py-1 px-5">
           <h4><%= @spot.address %></h4>
         </div>
-        <div class="spot_basic_attr col-12 py-1 px-2">
+        <div class="spot_basic_attr col-12 py-1 px-3">
           <h3><span class="badge bg-light"><%= t('activerecord.attributes.spot.phone') %></span></h3>
         </div>
-        <div class="spot_basic_val col-12 py-1 px-4">
+        <div class="spot_basic_val col-12 py-1 px-5">
           <h4><%= @spot.phone %></h4>
         </div>
-        <div class="spot_basic_attr col-12 py-1 px-2">
+        <div class="spot_basic_attr col-12 py-1 px-3">
           <h3><span class="badge bg-light"><%= t('activerecord.attributes.spot.holiday') %></span></h3>
         </div>
-        <div class="spot_basic_val col-12 py-1 px-4">
+        <div class="spot_basic_val col-12 py-1 px-5">
           <h4><%= @spot.holiday %></h4>
         </div>
-        <div>
-          <ul>
-            <% if user_signed_in? %>
-              <% if current_user.try(:admin?) %>
-                <li><%= link_to "編集", edit_admin_spot_path %></li>
-                <li><%= link_to "削除", admin_spot_path(@spot.id), method: :delete, data: { confirm: '本当に削除しますか？' } %></li>
-              <% end %>
-            <% end %>
-          </ul>
-        </div>
+        <%# 管理メニュー %>
+        <% if user_signed_in? %>
+          <% if current_user.try(:admin?) %>
+            <div class="border-top col-12 mt-4 py-1 px-4">
+              <h3 class="py-3"><span class="badge text-white bg-info"><%= t('views.messages.admin_menu') %></span></h3>
+              <ul>
+                <li><%= link_to t('views.button.edit'), edit_admin_spot_path %></li>
+                <li><%= link_to t('views.button.delete'), admin_spot_path(@spot.id), method: :delete, data: { confirm: '本当に削除しますか？' } %></li>
+              </ul>
+            </div>
+          <% end %>
+        <% end %>
       </aside>
     </div>
     <div class="main col-12 col-md-8 pl-0 pl-md-4 pr-0">
       <main>
-        <%# 記事部分 %>
         <article class="border shadow-sm bg-white p-4">
           <h3><span class="badge bg-light"><%= t('views.messages.spot_overview') %></span></h3>
           <div class="spot_description">
@@ -96,7 +97,6 @@
             </div>
           </div>
         </article>
-        <%# 地図部分 %>
         <div class="show_map_area border shadow-sm bg-white mt-5 p-4">
           <h3><span class="badge bg-light"><%= t('views.messages.map_info') %></span></h3>
           <div class="gmap_container">

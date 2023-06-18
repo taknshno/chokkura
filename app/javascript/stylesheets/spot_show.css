@@ -83,7 +83,10 @@
 
 .spot_description div figure img {
   margin-bottom: 10px;
-  max-width: 100%;
+  height: 150px;
+  width: 100%;
+  object-fit: contain;
+  background: #eee;
 }
 
 .sidebar .area {
@@ -130,8 +133,8 @@
   text-align: center;
 }
 
-
 .gmap_container {
+  margin: 15px auto 5px;
   height: 0;
   overflow: hidden;
   padding-bottom: 56.25%;

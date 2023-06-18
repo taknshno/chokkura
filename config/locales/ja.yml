@@ -260,7 +260,7 @@ ja:
       control: '操作'
       back: '戻る'
       select_tag: "タグを選択する"
-      add_favorite: "お気に入りを解除する"
+      add_favorite: "お気に入りに登録する"
       remove_favorite: "お気に入りを解除する"
       grant_admin: "管理者権限を付与しました"
       ensure_admin: "管理者権限を抹消しました"
