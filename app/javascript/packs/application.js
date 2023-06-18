@@ -13,6 +13,7 @@ import '../stylesheets/flash_message';
 import '../stylesheets/style';
 import '../stylesheets/top';
 import '../stylesheets/cards';
+import '../stylesheets/spot_show';
 
 Rails.start()
 Turbolinks.start()

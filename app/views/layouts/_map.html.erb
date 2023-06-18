@@ -1,0 +1,25 @@
+<script>
+  let map
+
+  function initMap(){
+    geocoder = new google.maps.Geocoder()
+    var test ={lat: <%= @spot.latitude %>, lng: <%= @spot.longitude %>};
+
+    map = new google.maps.Map(document.getElementById("gmap"), {
+      center: test,
+      zoom: 9,
+    });
+
+    var contentString = "<%= @spot.address %>";
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+
+    marker = new google.maps.Marker({
+      position:  test,
+      map: map,
+      title: contentString
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>

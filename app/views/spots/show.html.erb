@@ -1,86 +1,117 @@
 <% content_for(:title, @spot.name) %>
-
-<div>
-<h4><%= @spot.name %></h4>
+<div class="container mt-4">
+  <div class="row justify-content-center px-4">
+    <div class="show_title_area area-<%= @spot.area_before_type_cast %> col-12">
+      <h1><%= @spot.name %></h1>
+    </div>
+    <div class="show_key_visual col-12 mb-5">
+      <% if @spot.images.first && @spot.images.first.url %>
+        <%= image_tag(@spot.images.first.url) %>
+      <% end %>
+      <div class="copy">
+        <h3><%= @spot.sales_copy %></h3>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <aside class="sidebar fixed border shadow-sm bg-white row p-0">
+        <div class="area area-bg-<%= @spot.area_before_type_cast %> col-9 mb-2">
+          <%= @spot.area %><%= t('views.messages.area') %>
+        </div>
+        <div class="col-3 fav-area">
+          <% if user_signed_in? %>
+            <% if @spot.favorited_by?(current_user)  %>
+              <%= link_to favorite_path(@spot), method: :delete do %>
+                <span class="bi bi-heart-fill" title="<%= t('views.messages.remove_favorite') %>"></span><% end %>
+            <% else %>
+              <%= link_to favorites_path(spot_id: @spot.id), method: :post do %>
+                <span class="bi bi-heart" title="<%= t('views.messages.add_favorite') %>"></span><% end %>
+            <% end %>
+          <% else %>
+            <%= link_to new_user_session_path do %>
+              <span class="bi bi-heart" title="<%= t('views.messages.add_favorite') %>"></span><% end %>
+          <% end %>
+        </div>
+        <div class="spot_basic_title col-12 py-4 px-3">
+          <h3><%= @spot.name %></h3>
+        </div>
+        <div class="spot_basic_attr col-12 py-1 px-2">
+          <h4><span class="badge bg-light"><%= t('activerecord.attributes.spot.address') %></span></h4>
+        </div>
+        <div class="spot_basic_val col-12 py-1 px-4">
+          <h4><%= @spot.address %></h4>
+        </div>
+        <div class="spot_basic_attr col-12 py-1 px-2">
+          <h4><span class="badge bg-light"><%= t('activerecord.attributes.spot.phone') %></span></h4>
+        </div>
+        <div class="spot_basic_val col-12 py-1 px-4">
+          <h4><%= @spot.phone %></h4>
+        </div>
+        <div class="spot_basic_attr col-12 py-1 px-2">
+          <h4><span class="badge bg-light"><%= t('activerecord.attributes.spot.holiday') %></span></h4>
+        </div>
+        <div class="spot_basic_val col-12 py-1 px-4">
+          <h4><%= @spot.holiday %></h4>
+        </div>
+        <div>
+          <ul>
+            <% if user_signed_in? %>
+              <% if current_user.try(:admin?) %>
+                <li><%= link_to "編集", edit_admin_spot_path %></li>
+                <li><%= link_to "削除", admin_spot_path(@spot.id), method: :delete, data: { confirm: '本当に削除しますか？' } %></li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+      </aside>
+    </div>
+    <div class="main col-12 col-md-8 pl-4 pr-0">
+      <main>
+        <article class="border shadow-sm bg-white">
+          <%= @spot.detail_description %>
+        </article>
+        <div class="show_map_area border shadow-sm bg-white mt-3">
+          <h4>地図情報</h4>
+          <div class="gmap_container">
+            <div id="gmap"></div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-<div>
-  <h4><%= @spot.name %></h4>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr>
+<div class="shadow-sm bg-white rounded row no-gutters col-12 mb-4">
   <% @spot.images.each do |image| %>
     <% if image && image.url %>
       <%= image_tag(image.url, style: "max-width: 100px; max-height: 100px;") %>
     <% end %>
   <% end %>
 </div>
-<div>
-<div id='map'></div>
-
-<style>
-#map {
-  height: 300px;
-  width: 400px;
-}
-</style>
-
-<script>
-  let map
-
-  function initMap(){
-    geocoder = new google.maps.Geocoder()
-    var test ={lat: <%= @spot.latitude %>, lng: <%= @spot.longitude %>};
-
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: test,
-      zoom: 15,
-    });
-
-    var contentString = '<%= @spot.address %>';
-    var infowindow = new google.maps.InfoWindow({
-      content: contentString
-    });
-
-    marker = new google.maps.Marker({
-      position:  test,
-      map: map,
-      title: contentString
-    });
-  }
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
-
-
-
-</div>
-<div>
-  <%= @spot.address %><br />
-  <%= @spot.phone %><br />
-  <%= @spot.holiday %><br />
-<% if current_user%>
-  <% if @spot.favorited_by?(current_user)  %>
-    <%= link_to 'お気に入り解除する', favorite_path(@spot), method: :delete, class: 'btn btn-danger' %>
-  <% else %>
-    <%= link_to 'お気に入りする', favorites_path(spot_id: @spot.id), method: :post, class: 'btn btn-primary' %>
-  <% end %>
-<%end%>
-<%= link_to 'Back', spots_path %>
-<div>
-  <ul>
-    <% if user_signed_in? %>
-      <% if current_user.try(:admin?) %>
-        <li><%= link_to "編集", edit_admin_spot_path %></li>
-        <li><%= link_to "削除", admin_spot_path(@spot.id), method: :delete, data: { confirm: '本当に削除しますか？' } %></li>
-      <% end %>
-    <% end %>
-  </ul>
-</div>
+  <%#  地図読み込み
+<%= render 'layouts/map' %>
