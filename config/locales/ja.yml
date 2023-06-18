@@ -267,7 +267,9 @@ ja:
       already_admin: "すでに管理者権限があります"
       already_not_admin: "すでに管理者権限はありません"
       change_admin_failed: "管理者権限の変更に失敗しました"
+      spot_overview: "スポット概要"
       area: "エリア"
+      map_info: "地図情報"
     button:
       submit: '登録する'
       confirm: '確認する'

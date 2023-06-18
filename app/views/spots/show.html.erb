@@ -1,5 +1,5 @@
 <% content_for(:title, @spot.name) %>
-<div class="container mt-4">
+<div class="container my-4">
   <div class="row justify-content-center px-4">
     <div class="show_title_area area-<%= @spot.area_before_type_cast %> col-12">
       <h1><%= @spot.name %></h1>
@@ -12,7 +12,7 @@
         <h3><%= @spot.sales_copy %></h3>
       </div>
     </div>
-    <div class="col-12 col-md-4">
+    <div class="col-12 col-md-4 mb-5">
       <aside class="sidebar fixed border shadow-sm bg-white row p-0">
         <div class="area area-bg-<%= @spot.area_before_type_cast %> col-9 mb-2">
           <%= @spot.area %><%= t('views.messages.area') %>
@@ -35,19 +35,19 @@
           <h3><%= @spot.name %></h3>
         </div>
         <div class="spot_basic_attr col-12 py-1 px-2">
-          <h4><span class="badge bg-light"><%= t('activerecord.attributes.spot.address') %></span></h4>
+          <h3><span class="badge bg-light"><%= t('activerecord.attributes.spot.address') %></span></h3>
         </div>
         <div class="spot_basic_val col-12 py-1 px-4">
           <h4><%= @spot.address %></h4>
         </div>
         <div class="spot_basic_attr col-12 py-1 px-2">
-          <h4><span class="badge bg-light"><%= t('activerecord.attributes.spot.phone') %></span></h4>
+          <h3><span class="badge bg-light"><%= t('activerecord.attributes.spot.phone') %></span></h3>
         </div>
         <div class="spot_basic_val col-12 py-1 px-4">
           <h4><%= @spot.phone %></h4>
         </div>
         <div class="spot_basic_attr col-12 py-1 px-2">
-          <h4><span class="badge bg-light"><%= t('activerecord.attributes.spot.holiday') %></span></h4>
+          <h3><span class="badge bg-light"><%= t('activerecord.attributes.spot.holiday') %></span></h3>
         </div>
         <div class="spot_basic_val col-12 py-1 px-4">
           <h4><%= @spot.holiday %></h4>
@@ -64,13 +64,41 @@
         </div>
       </aside>
     </div>
-    <div class="main col-12 col-md-8 pl-4 pr-0">
+    <div class="main col-12 col-md-8 pl-0 pl-md-4 pr-0">
       <main>
-        <article class="border shadow-sm bg-white">
-          <%= @spot.detail_description %>
+        <%# 記事部分 %>
+        <article class="border shadow-sm bg-white p-4">
+          <h3><span class="badge bg-light"><%= t('views.messages.spot_overview') %></span></h3>
+          <div class="spot_description">
+            <div class="my-3 clearfix">
+              <% if @spot.images.second && @spot.images.second.url %>
+                <figure>
+                  <%= link_to @spot.images.second.url, "data-lightbox": @spot.images.second do %>
+                    <%= image_tag(@spot.images.second.url) %>
+                  <% end %>
+                </figure>
+              <% end %>
+              <p>
+                <%= @spot.detail_description %>
+              </p>
+            </div>
+            <div class="my-5 clearfix">
+              <% if @spot.images.third && @spot.images.third.url %>
+                <figure>
+                  <%= link_to @spot.images.third.url, "data-lightbox": @spot.images.third do %>
+                    <%= image_tag(@spot.images.third.url) %>
+                  <% end %>
+                </figure>
+              <% end %>
+              <p>
+                <%= @spot.detail_description %>
+              </p>
+            </div>
+          </div>
         </article>
-        <div class="show_map_area border shadow-sm bg-white mt-3">
-          <h4>地図情報</h4>
+        <%# 地図部分 %>
+        <div class="show_map_area border shadow-sm bg-white mt-5 p-4">
+          <h3><span class="badge bg-light"><%= t('views.messages.map_info') %></span></h3>
           <div class="gmap_container">
             <div id="gmap"></div>
           </div>
@@ -79,39 +107,4 @@
     </div>
   </div>
 </div>
-
-
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<hr>
-<div class="shadow-sm bg-white rounded row no-gutters col-12 mb-4">
-  <% @spot.images.each do |image| %>
-    <% if image && image.url %>
-      <%= image_tag(image.url, style: "max-width: 100px; max-height: 100px;") %>
-    <% end %>
-  <% end %>
-</div>
-  <%#  地図読み込み
 <%= render 'layouts/map' %>

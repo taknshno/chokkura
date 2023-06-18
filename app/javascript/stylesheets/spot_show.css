@@ -61,7 +61,30 @@
   letter-spacing: 0.1em;
 }
 
+.spot_description p {
+  font-size: 1.4rem;
+	margin-bottom: 1.5rem;
+	line-height: 2.5rem;
+  letter-spacing: 1px;
+}
 
+.spot_description div figure {
+	margin: 10px 15px 0;
+	width: 40%;
+}
+
+.spot_description div:nth-child(even) figure {
+	float: right;
+}
+
+.spot_description div:nth-child(odd) figure {
+	float: left;
+}
+
+.spot_description div figure img {
+  margin-bottom: 10px;
+  max-width: 100%;
+}
 
 .sidebar .area {
   font-size: 2rem;
@@ -74,7 +97,7 @@
 .fixed {
   position: -webkit-sticky;
   position: sticky;
-  top: 50px;
+  top: 55px;
 }
 
 /* 県北 */
@@ -107,9 +130,6 @@
   text-align: center;
 }
 
-.show_map_area h4{
-  font-weight: 600;
-}
 
 .gmap_container {
   height: 0;
