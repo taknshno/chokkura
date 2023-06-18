@@ -1,4 +1,6 @@
 class FavoritesController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     favorite = current_user.favorites.create(spot_id: params[:spot_id])
     flash[:notice] = t('flash.favorited_spot')
