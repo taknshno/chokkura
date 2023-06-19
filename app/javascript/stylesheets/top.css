@@ -59,9 +59,17 @@
 	100%{ opacity: 0;}
 }
 
-.spot_index_header img {
+.spot_index_header {
+  background-color: #fff;
+}
+
+.spots_title img {
   width: 250px;
   height: auto;
+}
+
+.spot_search_area {
+  z-index: 50;
 }
 
 .spot_search_area div {

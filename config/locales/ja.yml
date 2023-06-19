@@ -259,7 +259,7 @@ ja:
       logout: 'ログアウト'
       control: '操作'
       back: '戻る'
-      select_tag: "タグを選択する"
+      select_tag: "タグの選択"
       add_favorite: "お気に入りに登録する"
       remove_favorite: "お気に入りを解除する"
       grant_admin: "管理者権限を付与しました"

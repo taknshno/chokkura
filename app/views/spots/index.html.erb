@@ -9,34 +9,31 @@
     <span><%= t('views.messages.key_text_html') %></span>
   </div>
 </div>
-<div class="container mt-4 p-0">
-  <div class="p-0 my-4 spot_index_header row">
-    <div class="col-12 col-md-6 col-lg-7  p-0">
-      <%= image_tag '/assets/spot_title.jpg' %>
-    </div>
-    <div class="spot_search_area col-12 col-md-6 col-lg-5 py-4 p-md-0">
-      <div class="search_bar shadow-sm py-4 px-2 w-100 w-md-50 justify-content-center">
-        <%= form_with url: search_spots_path, method: :get, local: true do |f| %>
-          <div class="col-auto p-0">
-            <%= f.select :area, Spot.areas.keys, { include_blank: "エリアを選択する" }, value: @area, class: "form-control form-control-lg"  %>
-            <%= f.select :tag_id, Tag.all.collect { |tag| ["#{tag.name}(#{tag.spots.count})", tag.id] }, { include_blank: t('views.messages.select_tag'), selected: params[:tag_id] }, class:"form-control form-control-lg ml-3", value: @tag_id  %>
-          </div>
-          <div class="col-auto pl-2 pr-0">
-            <%= f.submit t('views.button.search'), class:"form-control form-control-lg" %>
-          </div>
-        <% end %>
-      </div>
+<div class="container row mt-4 mx-auto p-2 justify-content-center">
+  <div class="spots_title col-12 col-md-5 col-lg-7 py-0 mb-4 px-4">
+    <%= image_tag '/assets/spot_title.jpg' %>
+  </div>
+  <div class="spot_search_area fixed col-12 col-md-7 col-lg-5 mb-4">
+    <div class="search_bar shadow bg-white rounded py-4 px-2 w-100 w-md-50 justify-content-center">
+      <%= form_with url: search_spots_path, method: :get, local: true do |f| %>
+        <div class="col-auto p-0">
+          <%= f.select :area, Spot.areas.keys, { include_blank: t('views.messages.select_area'), selected: params[:area] }, value: @area, class: "form-control form-control-lg" %>
+          <%= f.select :tag_id, Tag.all.collect { |tag| ["#{tag.name}(#{tag.spots.count})", tag.id] }, { include_blank: t('views.messages.select_tag'), selected: params[:tag_id] }, value: @tag_id, class:"form-control form-control-lg ml-3" %>
+        </div>
+        <div class="col-auto pl-2 pr-0">
+          <%= f.submit t('views.button.search'), class:"form-control form-control-lg" %>
+        </div>
+      <% end %>
     </div>
   </div>
   <% if @spots.empty? %>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center col-12">
       <div class="empty-wrapper">
         <%= image_tag '/assets/no_spot.png', class: 'no-image' %>
-
       </div>
     </div>
   <% else %>
-    <div class="row justify-content-start">
+    <div class="row justify-content-start col-12">
       <% @spots.each do |spot| %>
         <div class="col-12 col-md-6 col-lg-4">
           <div class="place-card__header">

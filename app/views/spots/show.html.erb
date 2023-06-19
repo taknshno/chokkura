@@ -52,10 +52,10 @@
         <div class="spot_basic_val col-12 py-1 px-5">
           <h4><%= @spot.holiday %></h4>
         </div>
-        <%# 管理メニュー %>
+        <%# ===Admin Only=== %>
         <% if user_signed_in? %>
           <% if current_user.try(:admin?) %>
-            <div class="border-top col-12 mt-4 py-1 px-4">
+            <div class="border-top col-12 mt-4 pt-2 px-4">
               <h3 class="py-3"><span class="badge text-white bg-info"><%= t('views.messages.admin_menu') %></span></h3>
               <ul>
                 <li><%= link_to t('views.button.edit'), edit_admin_spot_path %></li>
@@ -64,6 +64,7 @@
             </div>
           <% end %>
         <% end %>
+        <%# ===Admin Only=== %>
       </aside>
     </div>
     <div class="main col-12 col-md-8 pl-0 pl-md-4 pr-0">
