@@ -133,6 +133,11 @@
   text-align: center;
 }
 
+.fav-area span{
+  vertical-align: middle;
+}
+
+
 .gmap_container {
   margin: 15px auto 5px;
   height: 0;

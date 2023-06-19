@@ -6,10 +6,15 @@ class SpotsController < ApplicationController
 
   def search
     @spots = Spot.all
-    key_tag_id = params[:key_tag_id]
+    area = params[:area]
+    tag_id = params[:tag_id]
 
-    if key_tag_id.present?
-      @spots = @spots.tag_search(key_tag_id.to_i)
+    if area.present?
+      @spots = @spots.area_search(area)
+    end
+
+    if tag_id.present?
+      @spots = @spots.tag_search(tag_id.to_i)
     end
 
     #pagination

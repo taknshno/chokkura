@@ -60,23 +60,19 @@
 }
 
 .spot_index_header {
-  margin: 0 0 30px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  background-color: #fff;
 }
 
-.spot_index_header img {
-  width: 28%;
+.spots_title img {
+  width: 250px;
   height: auto;
 }
 
 .spot_search_area {
-  float: right;
+  z-index: 50;
 }
 
 .spot_search_area div {
   float: left;
   display: flex;
-  align-items: flex-end;
 }
