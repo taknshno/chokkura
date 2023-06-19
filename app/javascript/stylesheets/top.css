@@ -59,24 +59,12 @@
 	100%{ opacity: 0;}
 }
 
-.spot_index_header {
-  margin: 0 0 30px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-}
-
 .spot_index_header img {
-  width: 28%;
+  width: 250px;
   height: auto;
-}
-
-.spot_search_area {
-  float: right;
 }
 
 .spot_search_area div {
   float: left;
   display: flex;
-  align-items: flex-end;
 }

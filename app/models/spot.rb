@@ -23,5 +23,6 @@ class Spot < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
-  scope :tag_search, -> (key_tag_id){ where(id: Tagging.where(tag_id: key_tag_id).pluck(:spot_id)) }
+  scope :area_search, -> (area){ where(area: area) }
+  scope :tag_search, -> (tag_id){ where(id: Tagging.where(tag_id: tag_id).pluck(:spot_id)) }
 end

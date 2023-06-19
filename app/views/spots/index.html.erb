@@ -9,24 +9,30 @@
     <span><%= t('views.messages.key_text_html') %></span>
   </div>
 </div>
-<div class="container mt-4">
-  <div class="p-0 spot_index_header">
-    <%= image_tag '/assets/spot_title.jpg' %>
-    <div class="spot_search_area row">
-      <%= form_with url: search_spots_path, method: :get, local: true do |f| %>
-        <div class="col-auto">
-          <%= f.select :key_tag_id, Tag.all.collect { |l| ["#{l.name}(#{l.spots.count})", l.id] }, { include_blank: t('views.messages.select_tag'), selected: params[:key_tag_id] }, class:"form-control-lg", value: @key_tag_id  %>
-        </div>
-        <div class="col-auto pl-1">
-          <%= f.submit t('views.button.search'), class:"form-control form-control-lg" %>
-        </div>
-      <% end %>
+<div class="container mt-4 p-0">
+  <div class="p-0 my-4 spot_index_header row">
+    <div class="col-12 col-md-6 col-lg-7  p-0">
+      <%= image_tag '/assets/spot_title.jpg' %>
+    </div>
+    <div class="spot_search_area col-12 col-md-6 col-lg-5 py-4 p-md-0">
+      <div class="search_bar shadow-sm py-4 px-2 w-100 w-md-50 justify-content-center">
+        <%= form_with url: search_spots_path, method: :get, local: true do |f| %>
+          <div class="col-auto p-0">
+            <%= f.select :area, Spot.areas.keys, { include_blank: "エリアを選択する" }, value: @area, class: "form-control form-control-lg"  %>
+            <%= f.select :tag_id, Tag.all.collect { |tag| ["#{tag.name}(#{tag.spots.count})", tag.id] }, { include_blank: t('views.messages.select_tag'), selected: params[:tag_id] }, class:"form-control form-control-lg ml-3", value: @tag_id  %>
+          </div>
+          <div class="col-auto pl-2 pr-0">
+            <%= f.submit t('views.button.search'), class:"form-control form-control-lg" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
   <% if @spots.empty? %>
     <div class="row justify-content-center">
       <div class="empty-wrapper">
         <%= image_tag '/assets/no_spot.png', class: 'no-image' %>
+
       </div>
     </div>
   <% else %>
@@ -65,7 +71,7 @@
               <div class="place-card__tags">
                 <p class="mb-0 text-muted">
                   <% spot.tags.each_with_index do |tag, index| %>
-                    <%= link_to tag.name, search_spots_path(key_tag_id: tag.id) %>
+                    <%= link_to tag.name, search_spots_path(tag_id: tag.id) %>
                     <%= ',' unless index == spot.tags.size - 1 %>
                   <% end %>
                 </p>
