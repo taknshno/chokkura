@@ -133,7 +133,7 @@ ja:
   errors:
     format: "%{attribute}%{message}"
     messages:
-      title: "以下のエラーがあります。"
+      title: "以下のエラーがあります"
       accepted: を受諾してください
       blank: を入力してください
       confirmation: と%{attribute}の入力が一致しません
@@ -260,6 +260,7 @@ ja:
       control: '操作'
       back: '戻る'
       select_tag: "タグの選択"
+      select_image: "画像の選択"
       add_favorite: "お気に入りに登録する"
       remove_favorite: "お気に入りを解除する"
       grant_admin: "管理者権限を付与しました"
@@ -270,6 +271,15 @@ ja:
       spot_overview: "スポット概要"
       area: "エリア"
       map_info: "地図情報"
+    form_supplement:
+      name: "スポットの名称を入力します。"
+      area: "スポットの所在エリアを選択します。"
+      address: "スポットの住所を入力します。"
+      phone: "スポットの電話番号を入力します。"
+      phone: "スポットの定休日を入力します。"
+      sales_copy: "詳細ページのキービジュアルで使用するコピーを入力します。"
+      detail_description: "詳細ページのスポット説明で使用する説明文を入力します。"
+      simple_description: "トップページのスポット説明で使用する説明文を入力します。"
     button:
       submit: '登録する'
       confirm: '確認する'

@@ -1,21 +1,26 @@
 <% content_for(:title, form_title) %>
 <%= form_with(model: @tag, local: true, url: tag_choose_new_or_edit ) do |f| %>
-  <% if @tag.errors.any? %>
-    <div>
-      <h5><%= t('errors.messages.title') %></h5>
-      <div>
-        <ul>
-          <% @tag.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
+  <div class="w-100 mx-auto my-4">
+    <% if @tag.errors.any? %>
+      <div class="form-error-message shadow">
+        <h5 class="alert-heading"><%= t('errors.messages.title') %></h5>
+        <div>
+          <ul>
+            <% @tag.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
       </div>
-    </div>
-  <% end %>
-  <div class="field">
-    <%= f.text_field :name, size: 54, placeholder:t('activerecord.attributes.tag.name') %>
+    <% end %>
   </div>
-  <div class="actions">
-    <%= f.submit t('views.button.confirm') %>
+  <div class="form-group shadow px-3 py-4 mb-5 mx-auto bg-white w-100 rounded justify-content-center">
+    <div class="field py-2">
+      <%= f.label :name, class:"badge" %>
+      <%= f.text_field :name, size: 54, placeholder:t('activerecord.attributes.tag.name'), class:"input-font form-control input-font form-control-lg" %>
+    </div>
+    <div class="actions mt-3 pt-4 border-top">
+      <%= f.submit t('views.button.confirm'), class:"w-75 mx-auto btn-primary input-font form-control input-font form-control-lg" %>
+    </div>
   </div>
 <% end %>

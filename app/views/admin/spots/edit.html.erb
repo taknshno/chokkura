@@ -1,7 +1,10 @@
-<h3><%= t('views.messages.edit_spot') %></h3>
-<div>
-  <%= render partial: "form", locals: { form_title: t('views.messages.edit_spot')} %>
-</div>
-<div>
-<%= link_to t('views.messages.back'), admin_spots_path  %>
+<div class="form-wrapper">
+  <div class="container justify-content-center">
+    <div class="title_area">
+      <h2><%= t('views.messages.edit_spot') %></h2>
+    </div>
+    <div>
+      <%= render partial: "form", locals: { form_title: t('views.messages.edit_spot')} %>
+    </div>
+  </div>
 </div>

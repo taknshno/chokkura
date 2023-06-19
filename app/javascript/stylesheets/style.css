@@ -7,19 +7,20 @@ body {
   height: 100%;
   font-size:1.6rem;
   line-height: 2;
-  /* background-color: #EFF9F9; */
   margin: 0 auto;
 }
 
 .main-wrapper {
   margin:0 auto;
-  padding-top: 50px;
-  max-width: 1000px;
+  padding-top: 75px;
   background-color: #FFF;
 }
 
 .title_area h2 {
   text-align: center;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  padding: 5px;
 }
 
 .admin_area table {

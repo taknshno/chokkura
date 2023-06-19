@@ -1,8 +1,11 @@
+.spot_index_wrapper {
+  margin-top: -25px;
+}
+
 .key_visual_area {
 	position: relative;
 	width: 100%;
 	height: 400px;
-  margin-top: -20px;
 }
 
 .key_visual_area .copy{

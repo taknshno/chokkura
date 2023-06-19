@@ -1,82 +1,84 @@
 <% content_for(:title, t('views.title.root')) %>
-<div class="key_visual_area">
-  <%= image_tag '/assets/key_visual1.png', class: "key_image" %>
-  <%= image_tag '/assets/key_visual2.jpg', class: "key_image"  %>
-  <%= image_tag '/assets/key_visual3.jpg', class: "key_image"  %>
-  <%= image_tag '/assets/key_visual4.png', class: "key_image"  %>
-  <div class="copy">
-    <h4><%= t('views.messages.key_title') %></h4>
-    <span><%= t('views.messages.key_text_html') %></span>
-  </div>
-</div>
-<div class="container row mt-4 mx-auto p-2 justify-content-center">
-  <div class="spots_title col-12 col-md-5 col-lg-7 py-0 mb-4 px-4">
-    <%= image_tag '/assets/spot_title.jpg' %>
-  </div>
-  <div class="spot_search_area fixed col-12 col-md-7 col-lg-5 mb-4">
-    <div class="search_bar shadow bg-white rounded py-4 px-2 w-100 w-md-50 justify-content-center">
-      <%= form_with url: search_spots_path, method: :get, local: true do |f| %>
-        <div class="col-auto p-0">
-          <%= f.select :area, Spot.areas.keys.map { |area| [area + "(#{Spot.where(area: area).count})", area] }, { include_blank: t('views.messages.select_area'), selected: params[:area] }, value: @area, class: "form-control form-control-lg" %>
-          <%= f.select :tag_id, Tag.all.collect { |tag| [tag.name + "(#{tag.spots.count})", tag.id] }, { include_blank: t('views.messages.select_tag'), selected: params[:tag_id] }, value: @tag_id, class:"form-control form-control-lg ml-3" %>
-        </div>
-        <div class="col-auto pl-2 pr-0">
-          <%= f.submit t('views.button.search'), class:"form-control form-control-lg" %>
-        </div>
-      <% end %>
+<div class="spot_index_wrapper">
+  <div class="key_visual_area">
+    <%= image_tag '/assets/key_visual1.png', class: "key_image" %>
+    <%= image_tag '/assets/key_visual2.jpg', class: "key_image"  %>
+    <%= image_tag '/assets/key_visual3.jpg', class: "key_image"  %>
+    <%= image_tag '/assets/key_visual4.png', class: "key_image"  %>
+    <div class="copy">
+      <h4><%= t('views.messages.key_title') %></h4>
+      <span><%= t('views.messages.key_text_html') %></span>
     </div>
   </div>
-  <% if @spots.empty? %>
-    <div class="row justify-content-center col-12">
-      <div class="empty-wrapper">
-        <%= image_tag '/assets/no_spot.png', class: 'no-image' %>
+  <div class="container row mt-4 mx-auto p-2 justify-content-center">
+    <div class="spots_title col-12 col-md-5 col-lg-7 py-0 mb-4 px-4">
+      <%= image_tag '/assets/spot_title.jpg' %>
+    </div>
+    <div class="spot_search_area fixed col-12 col-md-7 col-lg-5 mb-4">
+      <div class="search_bar shadow bg-white rounded py-4 px-2 w-100 w-md-50 justify-content-center">
+        <%= form_with url: search_spots_path, method: :get, local: true do |f| %>
+          <div class="col-auto p-0">
+            <%= f.select :area, Spot.areas.keys.map { |area| [area + "(#{Spot.where(area: area).count})", area] }, { include_blank: t('views.messages.select_area'), selected: params[:area] }, value: @area, class: "form-control form-control-lg" %>
+            <%= f.select :tag_id, Tag.all.collect { |tag| [tag.name + "(#{tag.spots.count})", tag.id] }, { include_blank: t('views.messages.select_tag'), selected: params[:tag_id] }, value: @tag_id, class:"form-control form-control-lg ml-3" %>
+          </div>
+          <div class="col-auto pl-2 pr-0">
+            <%= f.submit t('views.button.search'), class:"form-control form-control-lg" %>
+          </div>
+        <% end %>
       </div>
     </div>
-  <% else %>
-    <div class="row justify-content-start col-12">
-      <% @spots.each do |spot| %>
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="place-card__header">
-            <%= spot.area %>
-          </div>
-          <div class="place-card area-<%= spot.area_before_type_cast %>">
-            <div class="place-card__img">
-              <% if spot.images.first && spot.images.first.url %>
-                <%= link_to spot_path(spot.id) do %>
-                  <%= image_tag(spot.images.first.url) %>
-                <% end %>
-              <% end %>
-            </div>
-            <div class="place-card__content">
-              <h3 class="place-card__content_header">
-                <%= link_to spot_path(spot.id) do %>
-                  <%= spot.name %>
-                <% end %>
-                <% if user_signed_in? %>
-                  <% if spot.favorited_by?(current_user)  %>
-                    <%= link_to favorite_path(spot), method: :delete do %>
-                      <span class="bi bi-heart-fill" title="<%= t('views.messages.remove_favorite') %>"></span><% end %>
-                  <% else %>
-                    <%= link_to favorites_path(spot_id: spot.id), method: :post do %>
-                      <span class="bi bi-heart" title="<%= t('views.messages.add_favorite') %>"></span><% end %>
-                  <% end %>
-                <% end %>
-              </h3>
-              <div class="place-card__content_text">
-                <span><%= spot.simple_description %></span>
-              </div>
-              <div class="place-card__tags">
-                <p class="mb-0 text-muted">
-                  <% spot.tags.each_with_index do |tag, index| %>
-                    <%= link_to tag.name, search_spots_path(tag_id: tag.id) %>
-                    <%= ',' unless index == spot.tags.size - 1 %>
-                  <% end %>
-                </p>
-              </div>
-            </div>
-          </div>
+    <% if @spots.empty? %>
+      <div class="row justify-content-center col-12">
+        <div class="empty-wrapper">
+          <%= image_tag '/assets/no_spot.png', class: 'no-image' %>
         </div>
-      <% end %>
-    </div>
-  <% end %>
+      </div>
+    <% else %>
+      <div class="row justify-content-start col-12">
+        <% @spots.each do |spot| %>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="place-card__header">
+              <%= spot.area %>
+            </div>
+            <div class="place-card area-<%= spot.area_before_type_cast %>">
+              <div class="place-card__img">
+                <% if spot.images.first && spot.images.first.url %>
+                  <%= link_to spot_path(spot.id) do %>
+                    <%= image_tag(spot.images.first.url) %>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="place-card__content">
+                <h3 class="place-card__content_header">
+                  <%= link_to spot_path(spot.id) do %>
+                    <%= spot.name %>
+                  <% end %>
+                  <% if user_signed_in? %>
+                    <% if spot.favorited_by?(current_user)  %>
+                      <%= link_to favorite_path(spot), method: :delete do %>
+                        <span class="bi bi-heart-fill" title="<%= t('views.messages.remove_favorite') %>"></span><% end %>
+                    <% else %>
+                      <%= link_to favorites_path(spot_id: spot.id), method: :post do %>
+                        <span class="bi bi-heart" title="<%= t('views.messages.add_favorite') %>"></span><% end %>
+                    <% end %>
+                  <% end %>
+                </h3>
+                <div class="place-card__content_text">
+                  <span><%= spot.simple_description %></span>
+                </div>
+                <div class="place-card__tags">
+                  <p class="mb-0 text-muted">
+                    <% spot.tags.each_with_index do |tag, index| %>
+                      <%= link_to tag.name, search_spots_path(tag_id: tag.id) %>
+                      <%= ',' unless index == spot.tags.size - 1 %>
+                    <% end %>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
