@@ -25,13 +25,7 @@
             <div class="col-3 py-1 text-right"><%= t("activerecord.attributes.user.email") %></div>
             <div class="col-9 py-1 text-left"><%= @user.email %></div>
             <div class="col-3 py-1 text-right"><%= t("activerecord.attributes.user.location") %></div>
-            <div class="col-9 py-1 text-left">
-              <% if @user.location.present? %>
-                <%= @user.location %>
-              <% else %>
-                未設定
-              <% end %>
-            </div>
+            <div class="col-9 py-1 text-left"><%= @user.location %></div>
           </div>
         </div>
       </div>
