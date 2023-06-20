@@ -46,6 +46,8 @@
                   <%= link_to spot_path(spot.id) do %>
                     <%= image_tag(spot.images.first.url) %>
                   <% end %>
+                <% else %>
+                  <%= image_tag 'no_spot.png' %>
                 <% end %>
               </div>
               <div class="place-card__content">

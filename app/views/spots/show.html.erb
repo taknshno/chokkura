@@ -65,10 +65,10 @@
               <% end %>
             </div>
             <div class="col-12 p-0 admin-btn">
-              <%= link_to admin_spot_path(@spot.id), method: :delete, data: { confirm: '本当に削除しますか？' }  do %>
+              <%= link_to admin_spot_path(@spot.id), method: :delete, data: { confirm: t('views.messages.want_to_delete?') }  do %>
                 <div class="admin-item-sm border text-white m-1">
                   <span class="bi bi-trash"></span>
-                  <h3><%= t('views.admin_menus.watch_users') %></h3>
+                  <h3><%= t('views.admin_menus.delete_spot') %></h3>
                 </div>
               <% end %>
             </div>
