@@ -55,8 +55,8 @@
   background-color: rgb(248,215,218);
 }
 
-.form-error-message h5 {
-  font-size: clamp(15px, 16px, 17px);
+.form-error-message h4 {
+  font-size: clamp(12px, 1.6rem, 20px);
   font-weight: 600;
   padding: 10px;
   letter-spacing: 0.1em;

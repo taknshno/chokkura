@@ -1,0 +1,12 @@
+<% if resource.errors.any? %>
+  <div class="form-error-message shadow">
+    <h4 class="alert-heading"><%= t('errors.messages.title') %></h4>
+    <div>
+      <ul>
+        <% resource.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
