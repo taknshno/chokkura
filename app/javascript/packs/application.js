@@ -10,6 +10,7 @@ import '../stylesheets/top';
 import '../stylesheets/cards';
 import '../stylesheets/spot_show';
 import '../stylesheets/form';
+import '../stylesheets/user';
 
 Rails.start()
 // Turbolinks.start()

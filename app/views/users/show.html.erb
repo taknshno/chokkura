@@ -1,50 +1,80 @@
 <% content_for(:title, @user.name) %>
-<h4><%= @user.name %>のページ</h4>
-<div>
-  
-  <h5>ユーザ情報</h5>
-  <ul>
-    <li>
-      <h4>名前</h4>
-      <span><%= @user.name %></span>
-    </li>
-    <li>
-      <h4>メールアドレス</h4>
-      <span><%= @user.email %></span>
-    </li>
-    <li>
-      <h4>所在地</h4>
-      <span><%= @user.location %></span>
-    </li>
-    <li>
-      <h4>LINE連携</h4>
-      <span>++++++++++++未定義+++++++++++++</span>
-    </li>
-    <li>
-      <%= link_to "プロフィール編集", edit_user_registration_path, method: :get %>
-    </li>
-  </ul>
-</div>
-<hr>
-<div>
-  <div>
-   <h4>お気に入りスポット(<%= @user.favorite_spots.count %>件)</h4>
-   </div>
-  <div>
-    <% @user.favorite_spots.each do |spot| %>
-      <div style="border: 1px solid black;" class="mb-2">
-        <div><%= spot.area %></div>
-        <div>
-          <%= link_to spot_path(spot.id) do %>
-            <h5><%= spot.name %></h5>
-          <% end %>
-          <% spot.images.each do |image| %>
-            <% if image && image.url %>
-              <%= image_tag(image.url, style: "max-width: 100px; max-height: 100px;") %>
-            <% end %>
-          <% end %>
+<div class="profile_wrapper">
+  <div class="container">
+    <div class="row justify-content-center">
+      <%# Title Area %>
+      <div class="profile_title col-12 my-4">
+        <h2><%= @user.name %>さんのページ</h2>
+      </div>
+      <%# Profile Area %>
+      <div class="profile_item col-12 mb-4">
+        <div class="shadow p-4">
+          <div class="profile_item_title">
+            <div class="ml-2">
+              <h3><%= t('views.messages.user_profile') %></h3>
+            </div>
+            <div>
+              <%= link_to edit_user_registration_path, method: :get do %>
+                <span class="bi bi-pencil-square" alt="<%= t('views.messages.edit_user_info') %>"></span>
+              <% end %>
+            </div>
+          </div>
+          <div class="row ml-2 py-4">
+            <div class="col-3 py-1 text-right"><%= t("activerecord.attributes.user.name") %></div>
+            <div class="col-9 py-1 text-left"><%= @user.name %></div>
+            <div class="col-3 py-1 text-right"><%= t("activerecord.attributes.user.email") %></div>
+            <div class="col-9 py-1 text-left"><%= @user.email %></div>
+            <div class="col-3 py-1 text-right"><%= t("activerecord.attributes.user.location") %></div>
+            <div class="col-9 py-1 text-left"><%= @user.location %></div>
+          </div>
         </div>
       </div>
-    <% end %>
+      <%# Favorites Area %>
+      <div class="profile_item col-12">
+        <div class="shadow p-4">
+          <div class="profile_item_title">
+            <div class="ml-2">
+              <h3><%= t('views.messages.favorited_spots') %></h3>
+            </div>
+          </div>
+          <div class="row profile_favorite">
+            <% if @user.favorite_spots.present? %>
+              <% @user.favorite_spots.each do |spot| %>
+                <div class="col-6 col-sm-4 col-md-3 my-4">
+                  <div class="favorite-spot area-<%= spot.area_before_type_cast %> border shadow-sm">
+                    <div class="favorite-spot-item">
+                      <% if spot.images %>
+                        <%= image_tag(spot.images.first.url) %>
+                      <% else %>
+                        <%= image_tag 'no_spot.png' %>
+                      <% end %>
+                    </div>
+                    <div class="p-3">
+                      <div class="py-1 text-truncate">
+                        <h4><strong><%= spot.name %></strong></h4>
+                      </div>
+                      <div class="py-2">
+                        <h5><%= spot.area + t('views.messages.area') %></h5>
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <h5>行き先候補に追加</h5>
+                    </div>
+                    <%# Floating Unfavorite Button %>
+                    <div class="float-btn-wrapper shadow">
+                      <%= link_to favorite_path(spot), method: :delete do %>
+                        <div class="float-btn">
+                          <span aria-hidden="true">&times;</span>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

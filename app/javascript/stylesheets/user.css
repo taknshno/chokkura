@@ -1,0 +1,79 @@
+.profile_wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.profile_title {
+  margin-left: 20px;
+  padding-left: 5px;
+  letter-spacing: 0.2em;
+}
+
+.profile_item {
+  margin-left: 20px;
+  padding-left: 5px;
+}
+
+.profile_item_title h3 {
+  line-height: 20px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  padding-left: 10px;
+  border-left: 2px solid gray;
+}
+
+.profile_item_title div {
+  display: inline-block;
+}
+
+.profile_item_title span {
+  font-size: 1.5rem ;
+}
+
+.favorite-spot {
+	position: relative;
+}
+
+.favorite-spot-item img {
+	display: block;
+	height: 100px;
+	width: 100%;
+	object-fit: cover;
+}
+
+.float-btn-wrapper {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+}
+
+.float-btn-wrapper a {
+  color: #333333;
+}
+
+.float-btn-wrapper a:hover {
+  text-decoration: none;
+}
+
+.float-btn {
+  display: table;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.float-btn:hover {
+  background-color: #eeeeee;
+}
+
+.float-btn:active {
+  transform: translateY(0.1em);
+}
+
+.float-btn span {
+  line-height: 20px;
+  display: table-cell;
+  vertical-align: middle;
+}

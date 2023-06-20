@@ -181,3 +181,7 @@ body {
 .admin-btn div:hover{
   background-color: #117a8b;
 }
+
+.fav_btn{
+  color: red;
+}
