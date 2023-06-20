@@ -27,7 +27,9 @@
 </div>
 <hr>
 <div>
-  <h5>お気に入りスポット</h5>(<%= @user.favorite_spots.count %>件)
+  <div>
+   <h4>お気に入りスポット(<%= @user.favorite_spots.count %>件)</h4>
+   </div>
   <div>
     <% @user.favorite_spots.each do |spot| %>
       <div style="border: 1px solid black;" class="mb-2">
