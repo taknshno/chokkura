@@ -133,7 +133,7 @@ ja:
   errors:
     format: "%{attribute}%{message}"
     messages:
-      title: "以下のエラーがあります。"
+      title: "以下のエラーがあります"
       accepted: を受諾してください
       blank: を入力してください
       confirmation: と%{attribute}の入力が一致しません
@@ -233,6 +233,15 @@ ja:
   views:
     title:
       root: "茨城にちょっと行ってみたくなる -ちょっくら茨城-"
+      confirm_page: "確認画面"
+    admin_menus:
+      watch_users: "ユーザ一覧を見る"
+      watch_spots: "スポット一覧を見る"
+      register_spot: "スポットを登録する"
+      edit_spot: "スポットを編集する"
+      delete_spot: "スポットを削除する"
+      watch_tags: "タグ一覧を見る"
+      register_tag: "タグを登録する"
     messages:
       key_title: "いばらき、いちど来てみで！"
       key_text_html: "海、山、湖、自然あふれる場所。<br />都心からでも思い立ったらすぐ行けます。<br />ちょっとしたお出かけ気分で行ってみませんか？"
@@ -260,6 +269,7 @@ ja:
       control: '操作'
       back: '戻る'
       select_tag: "タグの選択"
+      select_image: "画像の選択"
       add_favorite: "お気に入りに登録する"
       remove_favorite: "お気に入りを解除する"
       grant_admin: "管理者権限を付与しました"
@@ -267,9 +277,20 @@ ja:
       already_admin: "すでに管理者権限があります"
       already_not_admin: "すでに管理者権限はありません"
       change_admin_failed: "管理者権限の変更に失敗しました"
+      register_with_this: "以下の内容で登録します"
+      unregistered: "未登録"
       spot_overview: "スポット概要"
       area: "エリア"
       map_info: "地図情報"
+    form_supplement:
+      name: "スポットの名称を入力します。"
+      area: "スポットの所在エリアを選択します。"
+      address: "スポットの住所を入力します。"
+      phone: "スポットの電話番号を入力します。"
+      phone: "スポットの定休日を入力します。"
+      sales_copy: "詳細ページのキービジュアルで使用するコピーを入力します。"
+      detail_description: "詳細ページのスポット説明で使用する説明文を入力します。"
+      simple_description: "トップページのスポット説明で使用する説明文を入力します。"
     button:
       submit: '登録する'
       confirm: '確認する'

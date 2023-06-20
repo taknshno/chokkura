@@ -1,7 +1,10 @@
-<h3><%= t('views.messages.create_tag') %></h3>
-<div>
-  <%= render partial: "form", locals: { form_title: t('views.messages.create_tag')} %>
-</div>
-<div>
-<%= link_to "タグ一覧", admin_tags_path  %>
+<div class="form-wrapper">
+  <div class="container justify-content-center">
+    <div class="title_area">
+      <h2><%= t('views.messages.create_tag') %></h2>
+    </div>
+    <div>
+      <%= render partial: "form", locals: { form_title: t('views.messages.create_tag')} %>
+    </div>
+  </div>
 </div>

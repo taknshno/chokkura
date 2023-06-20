@@ -1,57 +1,78 @@
 <% content_for(:title, form_title) %>
 <%= form_with(model: @spot, local: true, url: spot_choose_new_or_edit ) do |f| %>
-  <% if @spot.errors.any? %>
-    <div>
-      <h5><%= t('errors.messages.title') %></h5>
-      <div>
-        <ul>
-          <% @spot.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
+  <div class="w-100 mx-auto my-4">
+    <% if @spot.errors.any? %>
+      <div class="form-error-message shadow">
+        <h5 class="alert-heading"><%= t('errors.messages.title') %></h5>
+        <div>
+          <ul>
+            <% @spot.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
       </div>
-    </div>
-  <% end %>
-  <div class="field">
-    <%= f.text_field :name, size: 54, placeholder:t('activerecord.attributes.spot.name') %>
-  </div>
-  <div class="field">
-    <% @spot.images.each do |image| %>
-      <%= image_tag(image.url) if image && image.url %>
     <% end %>
-    <%= f.file_field :images, multiple: true %>
-    <%= f.hidden_field :images_cache %>
   </div>
-  <div class="field">
-    <%= f.select :area, Spot.areas.keys.map { |k| [t("enum.spot.area.#{k}"), k] }, { include_blank: t('views.messages.select_area') } %>
-  </div>
-  <div class="field">
-    <%= f.text_field :address, size: "54", placeholder:t('activerecord.attributes.spot.address') %>
-  </div>
-  <div class="field">
-    <%= f.text_field :phone, maxlength: "21", placeholder:t('activerecord.attributes.spot.phone') %>
-  </div>
-  <div class="field">
-    <%= f.text_field :holiday, maxlength: "10", placeholder:t('activerecord.attributes.spot.holiday') %>
-  </div>
-  <div class="field">
-    <%= f.text_field :sales_copy, size: "54", placeholder:t('activerecord.attributes.spot.sales_copy') %>
-  </div>
-  <div class="field">
-    <%= f.text_area :detail_description, size: "50x10", placeholder:t('activerecord.attributes.spot.detail_description') %>
-  </div>
-  <div class="field">
-    <%= f.text_area :simple_description, size: "50x2", placeholder:t('activerecord.attributes.spot.simple_description') %>
-  </div>
-  <div class="field">
-    <%= f.label :tag_name, t('activerecord.attributes.tag.name') %>
-    <ul>
-      <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |b| %>
-        <li><%= b.check_box %><span class="badge bg-info mx-1 pb-0"><%= b.label %></span></li>
+  <div class="form-group shadow px-3 py-4 mb-5 mx-auto bg-white w-100 rounded justify-content-center">
+    <div class="field py-2">
+      <%= f.label :name, class:"badge" %>
+      <%= f.text_field :name, size: 54, placeholder: t('views.form_supplement.name'), class:"input-font form-control form-control-lg" %>
+    </div>
+    <div class="custom-file">
+      <%= f.label :images, class:"badge" %>
+      <% if @spot.images.present? %>
+        <div class="row mx-2 my-3">
+          <% @spot.images.each do |image| %>
+            <div class="col-3 form_image_preview">
+              <%= link_to image.url, "data-lightbox": image do %>
+                <%= image_tag(image.url) if image && image.url %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
       <% end %>
-    </ul>
-  </div>
-  <div class="actions">
-    <%= f.submit t('views.button.confirm') %>
+      <%= f.file_field :images, multiple: true, placeholder: t('views.messages.select_image'), class:"input-font form-control form-file-field py-2" %>
+      <%= f.hidden_field :images_cache %>
+    </div>
+    <div class="field py-2">
+      <%= f.label :area, class:"badge" %>
+      <%= f.select :area, Spot.areas.keys.map { |k| [t("enum.spot.area.#{k}"), k] }, { include_blank: t('views.form_supplement.area') }, class:"input-font form-control form-control-lg" %>
+    </div>
+    <div class="field py-2">
+      <%= f.label :address, class:"badge" %>
+      <%= f.text_field :address, size: "54", placeholder: t('views.form_supplement.address'), class:"input-font form-control form-control-lg" %>
+    </div>
+    <div class="field py-2">
+      <%= f.label :phone, class:"badge" %>
+      <%= f.text_field :phone, maxlength: "21", placeholder: t('views.form_supplement.phone'), class:"input-font form-control form-control-lg" %>
+    </div>
+    <div class="field py-2">
+      <%= f.label :holiday, class:"badge" %>
+      <%= f.text_field :holiday, maxlength: "10", placeholder: t('views.form_supplement.holiday'), class:"input-font form-control form-control-lg" %>
+    </div>
+    <div class="field py-2">
+      <%= f.label :sales_copy, class:"badge" %>
+      <%= f.text_field :sales_copy, size: "54", placeholder: t('views.form_supplement.sales_copy'), class:"input-font form-control form-control-lg" %>
+    </div>
+    <div class="field py-2">
+      <%= f.label :simple_description, class:"badge" %>
+      <%= f.text_area :simple_description, size: "50x2", placeholder: t('views.form_supplement.simple_description'), class:"input-font form-control form-control-lg" %>
+    </div>
+    <div class="field py-2">
+      <%= f.label :detail_description, class:"badge" %>
+      <%= f.text_area :detail_description, size: "50x15", placeholder: t('views.form_supplement.detail_description'), class:"input-font form-control form-control-lg" %>
+    </div>
+    <div class="tags_field py-2 clearfix">
+      <%= f.label t('activerecord.models.tag'), class:"badge" %>
+      <ul>
+        <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |b| %>
+          <li><%= b.check_box %><span class="badge bg-info mx-1 pb-0"><%= b.label %></span></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="actions mt-3 pt-4 border-top">
+      <%= f.submit t('views.button.confirm'), class:"w-75 mx-auto btn-primary input-font form-control form-control-lg" %>
+    </div>
   </div>
 <% end %>

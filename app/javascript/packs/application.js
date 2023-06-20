@@ -9,6 +9,7 @@ import '../stylesheets/style';
 import '../stylesheets/top';
 import '../stylesheets/cards';
 import '../stylesheets/spot_show';
+import '../stylesheets/form';
 
 Rails.start()
 // Turbolinks.start()

@@ -1,57 +1,107 @@
-<% content_for(:title, "確認") %>
-<h2>Confirm</h2>
-<%= form_with(model: @spot, local: true, url: admin_spots_path ) do |f| %>
-  <%= f.hidden_field :name %>
-  <%= f.hidden_field :images_cache %>
-  <%= f.hidden_field :area %>
-  <%= f.hidden_field :address %>
-  <%= f.hidden_field :phone %>
-  <%= f.hidden_field :holiday %>
-  <%= f.hidden_field :sales_copy %>
-  <%= f.hidden_field :detail_description %>
-  <%= f.hidden_field :simple_description %>
-  <% @spot.tags.each do |tag| %>
-    <%= f.hidden_field :tag_ids, multiple: true, value: tag.id %>
-<% end %>
-  <div>Name: <%= @spot.name %></div>
-  <div>Image:
-    <% @spot.images.each do |image| %>
-      <%= image_tag(image.url) if image && image.url %>
-    <% end %>
-  </div>
-  <div>Area: <%= @spot.area %></div>
-  <div>Address: <%= @spot.address %></div>
-  <div>Phone: <%= @spot.phone %></div>
-  <div>Holiday: <%= @spot.holiday %></div>
-  <div>Sales Copy: <%= @spot.sales_copy %></div>
-  <div>Detail Description: <%= @spot.detail_description %></div>
-  <div>Simple Description: <%= @spot.simple_description %></div>
-  <div>Tags: </div>
-  <div>
-    <ul>
-      <% @spot.tags.each do |tag| %>
-        <li><span class="badge bg-info"><%= tag.name %></span></li>
+<% content_for(:title, t('views.title.confirm_page')) %>
+<div class="form-wrapper">
+  <div class="container justify-content-center">
+    <div class="title_area">
+      <h2><%= t('views.title.confirm_page') %></h2>
+    </div>
+    <div>
+      <%= form_with(model: @spot, local: true, url: admin_spots_path ) do |f| %>
+        <%# hidden_field %>
+        <%= f.hidden_field :name %>
+        <%= f.hidden_field :images_cache %>
+        <%= f.hidden_field :area %>
+        <%= f.hidden_field :address %>
+        <%= f.hidden_field :phone %>
+        <%= f.hidden_field :holiday %>
+        <%= f.hidden_field :sales_copy %>
+        <%= f.hidden_field :detail_description %>
+        <%= f.hidden_field :simple_description %>
+        <% @spot.tags.each do |tag| %>
+          <%= f.hidden_field :tag_ids, multiple: true, value: tag.id %>
+        <% end %>
+        <%# Display Area %>
+        <div class="form-group shadow px-3 py-4 mb-5 mx-auto bg-white w-100 rounded justify-content-center">
+          <div class="w-100 p-3 confirm_msg">
+            <h4><%= t('views.messages.register_with_this') %></h4>
+          </div>
+          <div class="field py-2">
+            <%= f.label :name, class:"badge bg-light" %>
+            <div class="w-100 pl-5 py-1"><%= @spot.name %></div>
+          </div>
+          <div class="field">
+            <%= f.label :images, class:"badge bg-light" %>
+            <% if @spot.images.present? %>
+              <div class="row mx-2 my-3">
+                <% @spot.images.each do |image| %>
+                  <div class="col-3 form_image_preview">
+                    <%= link_to image.url, "data-lightbox": image do %>
+                      <%= image_tag(image.url) if image && image.url %>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+            <% else %>
+              <%= t('views.messages.unregistered') %>
+            <% end %>
+          </div>
+          <div class="field py-2">
+            <%= f.label :area, class:"badge bg-light" %>
+            <div class="w-100 pl-5 py-1"><%= @spot.area %></div>
+          </div>
+          <div class="field py-2">
+            <%= f.label :address, class:"badge bg-light" %>
+            <div class="w-100 pl-5 py-1"><%= @spot.address %></div>
+          </div>
+          <div class="field py-2">
+            <%= f.label :phone, class:"badge bg-light" %>
+            <div class="w-100 pl-5 py-1"><%= @spot.phone %></div>
+          </div>
+          <div class="field py-2">
+            <%= f.label :holiday, class:"badge bg-light" %>
+            <div class="w-100 pl-5 py-1"><%= @spot.holiday %></div>
+          </div>
+          <div class="field py-2">
+            <%= f.label :sales_copy, class:"badge bg-light" %>
+            <div class="w-100 pl-5 py-1"><%= @spot.sales_copy %></div>
+          </div>
+          <div class="field py-2">
+            <%= f.label :simple_description, class:"badge bg-light" %>
+            <div class="w-100 pl-5 py-1"><%= @spot.simple_description %></div>
+          </div>
+          <div class="field py-2">
+            <%= f.label :detail_description, class:"badge bg-light" %>
+            <div class="w-100 pl-5 py-1"><%= @spot.detail_description %></div>
+          </div>
+          <div class="tags_field py-2 clearfix">
+            <%= f.label t('activerecord.models.tag'), class:"badge bg-light" %>
+            <ul>
+              <% @spot.tags.each do |tag| %>
+                <li><span class="badge bg-info"><%= tag.name %></span></li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="actions mt-3 pt-4 border-top">
+            <%= f.submit t('views.button.submit'), class:"w-50 mx-auto btn-primary input-font form-control form-control-lg" %>
+          </div>
+        </div>
       <% end %>
-    </ul>
+      <%= form_with(model: @spot, url:new_admin_spot_path, local:true, method:"get") do |f| %>
+        <%= f.hidden_field :name %>
+        <%= f.hidden_field :images_cache %>
+        <%= f.hidden_field :area %>
+        <%= f.hidden_field :address %>
+        <%= f.hidden_field :phone %>
+        <%= f.hidden_field :holiday %>
+        <%= f.hidden_field :sales_copy %>
+        <%= f.hidden_field :detail_description %>
+        <%= f.hidden_field :simple_description %>
+        <% @spot.tags.each do |tag| %>
+          <%= f.hidden_field :tag_ids, multiple: true, value: tag.id %>
+        <% end %>
+        <div>
+          <%= f.submit t('views.button.back'), class:"w-25 mx-auto btn-secondary input-font form-control form-control-lg", name: 'back' %>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div>
-    <%= f.submit "登録" %>
-  </div>
-<% end %>
-<%= form_with(model: @spot, url:new_admin_spot_path, local:true, method:"get") do |f| %>
-  <%= f.hidden_field :name %>
-  <%= f.hidden_field :images_cache %>
-  <%= f.hidden_field :area %>
-  <%= f.hidden_field :address %>
-  <%= f.hidden_field :phone %>
-  <%= f.hidden_field :holiday %>
-  <%= f.hidden_field :sales_copy %>
-  <%= f.hidden_field :detail_description %>
-  <%= f.hidden_field :simple_description %>
-  <% @spot.tags.each do |tag| %>
-    <%= f.hidden_field :tag_ids, multiple: true, value: tag.id %>
-<% end %>
-  <div>
-    <%= f.submit "戻る", name: 'back' %>
-  </div>
-<% end %>
+</div>
