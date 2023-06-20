@@ -44,3 +44,6 @@ gem 'devise'
 gem 'devise-i18n'
 gem "geocoder"
 gem "dotenv-rails"
+gem 'net-smtp'
+gem 'net-imap'
+gem 'net-pop'

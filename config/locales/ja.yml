@@ -291,6 +291,7 @@ ja:
       sales_copy: "詳細ページのキービジュアルで使用するコピーを入力します。"
       detail_description: "詳細ページのスポット説明で使用する説明文を入力します。"
       simple_description: "トップページのスポット説明で使用する説明文を入力します。"
+      tag_name: "タグの名称を入力します。"
     button:
       submit: '登録する'
       confirm: '確認する'
