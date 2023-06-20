@@ -5,7 +5,8 @@ html {
 
 body {
   height: 100%;
-  font-size:1.6rem;
+  color: #333333;
+  font-size: 1.6rem;
   line-height: 2;
   margin: 0 auto;
 }
@@ -136,4 +137,47 @@ body {
 .no-image {
   max-width: 300px;
   max-height: 300px;
+}
+
+.admin-item {
+  text-align: center;
+}
+
+.admin-item h3 {
+  font-size: 1.6rem;
+  letter-spacing: 0.2em;
+  margin: 0 auto 20px;
+}
+
+.admin-item span {
+  font-size: 5rem;
+  margin: 0 auto;
+}
+
+.admin-item-sm {
+  text-align: center;
+}
+
+.admin-item-sm h3 {
+  font-size: 1.6rem;
+  text-align: center;
+  letter-spacing: 0.2em;
+}
+
+.admin-item-sm span {
+  font-size: 2rem;
+  margin: 0 auto;
+  vertical-align: middle;
+}
+
+.admin-btn a:hover{
+  text-decoration: none;
+}
+
+.admin-btn div{
+  background-color: #17a2b8;
+}
+
+.admin-btn div:hover{
+  background-color: #117a8b;
 }

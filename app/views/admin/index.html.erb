@@ -3,27 +3,46 @@
   <div class="title_area">
     <h2><%= t('views.messages.admin_menu') %></h2>
   </div>
-  <div class="row mt-4">
-    <div class="col-4">
-      <h5><%= t('activerecord.models.user') %></h5>
-      <ul>
-        <li><%= link_to t('views.messages.watch_users_index'), admin_users_path %></li>
-        <li><%= t('views.messages.create_user') %></li>
-      </ul>
+  <div class="row mt-5">
+    <div class="col-6 col-md-4 p-0 admin-btn">
+      <%= link_to admin_users_path do %>
+        <div class="admin-item border text-white m-1">
+          <span class="bi bi-people-fill"></span>
+          <h3><%= t('views.admin_menus.watch_users') %></h3>
+        </div>
+      <% end %>
     </div>
-    <div class="col-4">
-      <h5><%= t('activerecord.models.spot') %></h5>
-      <ul>
-        <li><%= link_to t('views.messages.watch_spots_index'), admin_spots_path %></li>
-        <li><%= link_to t('views.messages.create_spot'), new_admin_spot_path %></li>
-      </ul>
+    <div class="col-6 col-md-4 p-0 admin-btn">
+      <%= link_to admin_spots_path do %>
+        <div class="admin-item border text-white m-1">
+          <span class="bi bi-journals"></span>
+          <h3><%= t('views.admin_menus.watch_spots') %></h3>
+        </div>
+      <% end %>
     </div>
-    <div class="col-4">
-      <h5><%= t('activerecord.models.tag') %></h5>
-      <ul>
-        <li><%= link_to t('views.messages.watch_tags_index'), admin_tags_path %></li>
-        <li><%= link_to t('views.messages.create_tag'), new_admin_tag_path %></li>
-      </ul>
+    <div class="col-6 col-md-4 p-0 admin-btn">
+      <%= link_to new_admin_spot_path do %>
+        <div class="admin-item border text-white m-1">
+          <span class="bi bi-journal-plus"></span>
+          <h3><%= t('views.admin_menus.register_spot') %></h3>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-6 col-md-4 p-0 admin-btn">
+      <%= link_to admin_tags_path do %>
+        <div class="admin-item border text-white m-1">
+          <span class="bi bi-bookmarks"></span>
+          <h3><%= t('views.admin_menus.watch_tags') %></h3>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-6 col-md-4 p-0 admin-btn">
+      <%= link_to new_admin_tag_path do %>
+        <div class="admin-item border text-white m-1">
+          <span class="bi bi-bookmark-plus"></span>
+          <h3><%= t('views.admin_menus.register_tag') %></h3>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
