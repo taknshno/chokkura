@@ -37,7 +37,7 @@
     </div>
     <div class="field py-2">
       <%= f.label :area, class:"badge" %>
-      <%= f.select :area, Spot.areas.keys.map { |k| [t("enum.spot.area.#{k}"), k] }, { include_blank: t('views.form_supplement.area') }, class:"input-font form-control form-control-lg" %>
+      <%= f.select :area, Spot.areas.keys.map { |k| [t("enum.spot.area.#{k}"), k] }, { include_blank: t('views.form_supplement.area') }, {class:"input-font form-control form-control-lg"} %>
     </div>
     <div class="field py-2">
       <%= f.label :address, class:"badge" %>
