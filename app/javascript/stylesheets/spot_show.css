@@ -129,12 +129,14 @@
 }
 
 .fav-area {
+  display: flex;
+  justify-content: center;
   font-size: 2rem;
-  text-align: center;
 }
 
 .fav-area span{
   vertical-align: middle;
+  text-align: center;
 }
 
 

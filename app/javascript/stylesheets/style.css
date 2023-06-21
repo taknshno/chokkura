@@ -170,14 +170,38 @@ body {
   vertical-align: middle;
 }
 
-.admin-btn a:hover{
+.admin-btn a:hover {
   text-decoration: none;
 }
 
-.admin-btn div{
+.admin-btn div {
   background-color: #17a2b8;
 }
 
-.admin-btn div:hover{
+.admin-btn div:hover {
   background-color: #117a8b;
+}
+
+.fav_btn {
+  color: #ff0000;
+}
+
+.fav_btn:hover {
+  color: #bd2130
+}
+
+.fav_btn:active {
+  transform: translateY(0.1em);
+}
+
+.unfav_btn {
+  color: #ff0000;
+}
+
+.unfav_btn:hover {
+  color: #bd2130;
+}
+
+.unfav_btn:active {
+  transform: translateY(0.1em);
 }

@@ -6,20 +6,6 @@
     <div>
       <% content_for(:title, t('views.title.confirm_page')) %>
       <%= form_with(model: @tag, local: true, url: admin_tags_path ) do |f| %>
-        <div class="w-100 mx-auto my-4">
-          <% if @tag.errors.any? %>
-            <div class="form-error-message shadow">
-              <h5 class="alert-heading"><%= t('errors.messages.title') %></h5>
-              <div>
-                <ul>
-                  <% @tag.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                  <% end %>
-                </ul>
-              </div>
-            </div>
-          <% end %>
-        </div>
         <div class="form-group shadow px-3 py-4 mb-5 mx-auto bg-white w-100 rounded justify-content-center">
           <div class="field py-2">
             <%= f.label :name, class:"badge" %>

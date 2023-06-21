@@ -16,6 +16,10 @@ class Admin::SpotsController < ApplicationController
 
   def confirm
     @spot = Spot.new(spot_params)
+
+    @spot[:phone] = "未掲載" if @spot[:phone].blank?
+    @spot[:holiday] = "未掲載" if @spot[:holiday].blank?
+
     if @spot.invalid?
       flash[:danger] = t('flash.input_error')
       render :new
@@ -23,7 +27,6 @@ class Admin::SpotsController < ApplicationController
   end
 
   def create
-    # @spot = current_user.spots.build(spot_params)
     @spot = Spot.new(spot_params)
     if params[:back]
       render :new

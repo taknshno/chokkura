@@ -17,19 +17,21 @@
         <div class="area area-bg-<%= @spot.area_before_type_cast %> col-9 mb-2">
           <%= @spot.area %><%= t('views.messages.area') %>
         </div>
-        <div class="col-3 fav-area">
+        <div class="col-3">
+          <div  class="fav-area">
           <% if user_signed_in? %>
             <% if @spot.favorited_by?(current_user)  %>
-              <%= link_to favorite_path(@spot), method: :delete do %>
+              <%= link_to favorite_path(@spot), method: :delete, class:"unfav_btn" do %>
                 <span class="bi bi-heart-fill" title="<%= t('views.messages.remove_favorite') %>"></span><% end %>
             <% else %>
-              <%= link_to favorites_path(spot_id: @spot.id), method: :post do %>
+              <%= link_to favorites_path(spot_id: @spot.id), method: :post, class:"fav_btn" do %>
                 <span class="bi bi-heart" title="<%= t('views.messages.add_favorite') %>"></span><% end %>
             <% end %>
           <% else %>
             <%= link_to new_user_session_path do %>
               <span class="bi bi-heart" title="<%= t('views.messages.add_favorite') %>"></span><% end %>
           <% end %>
+          </div>
         </div>
         <div class="spot_basic_title col-12 py-4 px-3">
           <h3><%= @spot.name %></h3>
