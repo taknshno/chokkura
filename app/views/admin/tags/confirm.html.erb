@@ -6,6 +6,7 @@
     <div>
       <% content_for(:title, t('views.title.confirm_page')) %>
       <%= form_with(model: @tag, local: true, url: admin_tags_path ) do |f| %>
+        <%= f.hidden_field :name %>
         <div class="form-group shadow px-3 py-4 mb-5 mx-auto bg-white w-100 rounded justify-content-center">
           <div class="field py-2">
             <%= f.label :name, class:"badge" %>
