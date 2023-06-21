@@ -3,6 +3,14 @@
   <div class="row justify-content-center px-4">
     <div class="show_title_area area-<%= @spot.area_before_type_cast %> col-12">
       <h1><%= @spot.name %></h1>
+      <% if user_signed_in? %>
+        <% if current_user.try(:admin?) %>
+          <%= link_to edit_admin_spot_path do %>
+            <span class="bi bi-pencil-square"></span><% end %>
+          <%= link_to admin_spot_path(@spot.id), method: :delete, data: { confirm: t('views.messages.want_to_delete?') }  do %>
+            <span class="bi bi-trash"></span><% end %>
+        <% end %>
+      <% end %>
     </div>
     <div class="show_key_visual col-12 mb-5">
       <% if @spot.images.first && @spot.images.first.url %>
@@ -19,18 +27,18 @@
         </div>
         <div class="col-3">
           <div  class="fav-area">
-          <% if user_signed_in? %>
-            <% if @spot.favorited_by?(current_user)  %>
-              <%= link_to favorite_path(@spot), method: :delete, class:"unfav_btn" do %>
-                <span class="bi bi-heart-fill" title="<%= t('views.messages.remove_favorite') %>"></span><% end %>
+            <% if user_signed_in? %>
+              <% if @spot.favorited_by?(current_user)  %>
+                <%= link_to favorite_path(@spot), method: :delete, class:"unfav_btn" do %>
+                  <span class="bi bi-heart-fill" title="<%= t('views.messages.remove_favorite') %>"></span><% end %>
+              <% else %>
+                <%= link_to favorites_path(spot_id: @spot.id), method: :post, class:"fav_btn" do %>
+                  <span class="bi bi-heart" title="<%= t('views.messages.add_favorite') %>"></span><% end %>
+              <% end %>
             <% else %>
-              <%= link_to favorites_path(spot_id: @spot.id), method: :post, class:"fav_btn" do %>
+              <%= link_to new_user_session_path, class:"fav_btn" do %>
                 <span class="bi bi-heart" title="<%= t('views.messages.add_favorite') %>"></span><% end %>
             <% end %>
-          <% else %>
-            <%= link_to new_user_session_path do %>
-              <span class="bi bi-heart" title="<%= t('views.messages.add_favorite') %>"></span><% end %>
-          <% end %>
           </div>
         </div>
         <div class="spot_basic_title col-12 py-4 px-3">
@@ -54,29 +62,16 @@
         <div class="spot_basic_val col-12 py-1 px-5">
           <h4><%= @spot.holiday %></h4>
         </div>
-        <%# ===Admin Only=== %>
-        <% if user_signed_in? %>
-          <% if current_user.try(:admin?) %>
-
-            <div class="col-12 p-0 admin-btn">
-              <%= link_to edit_admin_spot_path do %>
-                <div class="admin-item-sm border text-white m-1">
-                  <span class="bi bi-pencil-square"></span>
-                  <h3><%= t('views.admin_menus.edit_spot') %></h3>
-                </div>
-              <% end %>
-            </div>
-            <div class="col-12 p-0 admin-btn">
-              <%= link_to admin_spot_path(@spot.id), method: :delete, data: { confirm: t('views.messages.want_to_delete?') }  do %>
-                <div class="admin-item-sm border text-white m-1">
-                  <span class="bi bi-trash"></span>
-                  <h3><%= t('views.admin_menus.delete_spot') %></h3>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
-        <% end %>
-        <%# ===Admin Only=== %>
+        <div class="spot_basic_attr col-12 py-1 px-3">
+          <h3><span class="badge bg-light"><%= t('activerecord.models.tag') %></span></h3>
+        </div>
+        <div class="spot_basic_val tags_field col-12 mb-2 py-1 px-2">
+          <ul>
+            <% @spot.tags.each do |tag| %>
+              <li><span class="badge bg-info"><%= tag.name %></span></li>
+            <% end %>
+          </ul>
+        </div>
       </aside>
     </div>
     <div class="main col-12 col-md-8 pl-0 pl-md-4 pr-0">

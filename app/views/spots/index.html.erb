@@ -47,7 +47,9 @@
                     <%= image_tag(spot.images.first.url) %>
                   <% end %>
                 <% else %>
-                  <%= image_tag 'no_spot.png' %>
+                  <%= link_to spot_path(spot.id) do %>
+                    <%= image_tag 'no_spot.png' %>
+                  <% end %>
                 <% end %>
               </div>
               <div class="place-card__content">
@@ -69,12 +71,12 @@
                   <span><%= spot.simple_description %></span>
                 </div>
                 <div class="place-card__tags">
-                  <p class="mb-0 text-muted">
+                  <small class="mb-0 text-muted">
                     <% spot.tags.each_with_index do |tag, index| %>
                       <%= link_to tag.name, search_spots_path(tag_id: tag.id) %>
                       <%= ',' unless index == spot.tags.size - 1 %>
                     <% end %>
-                  </p>
+                  </small>
                 </div>
               </div>
             </div>
