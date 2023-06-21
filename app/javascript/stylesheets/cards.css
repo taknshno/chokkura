@@ -87,22 +87,9 @@
 
 .place-card__tags {
   padding-top: 20px;
+	line-height: 24px
 }
 
 .place-card__tags a {
 	color: #6c757d !important;
-}
-
-.place-card__tags ul {
-  margin: 0;
-  padding: 0;
-}
-
-.place-card__tags li {
-  font-size: 1.3rem;
-  line-height: 50px;
-  padding: 0 5px 0 0;
-  float: left;
-  width: auto;
-  list-style: none;
 }

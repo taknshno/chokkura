@@ -7,6 +7,13 @@
   letter-spacing: 0.2em;
   font-weight: 600;
   padding: 0 20px;
+  display: inline-block;
+}
+
+.show_title_area span {
+  font-size: 2rem;
+  padding-left: 8px;
+  display: inline-block;
 }
 
 .show_key_visual {
@@ -101,6 +108,7 @@
   position: -webkit-sticky;
   position: sticky;
   top: 55px;
+  z-index: 30;
 }
 
 /* 県北 */
