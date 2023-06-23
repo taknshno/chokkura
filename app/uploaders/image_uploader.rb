@@ -51,14 +51,23 @@ class ImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+
   def filename
-    "#{secure_token(10)}.#{file.extension}" if original_filename.present?
+    "#{secure_token}.#{file.extension}" if original_filename.present?
   end
 
-  protected
+  def secure_token
+    media_original_filenames_var = :"@#{mounted_as}_original_filenames"
 
-  def secure_token(length=16)
-    var = :"@#{mounted_as}_secure_token"
-    model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.hex(length/2))
+    unless model.instance_variable_get(media_original_filenames_var)
+      model.instance_variable_set(media_original_filenames_var, {})
+    end
+
+    unless model.instance_variable_get(media_original_filenames_var).map{|k,v| k }.include? original_filename.to_sym
+      new_value = model.instance_variable_get(media_original_filenames_var).merge({"#{original_filename}": SecureRandom.uuid})
+      model.instance_variable_set(media_original_filenames_var, new_value)
+    end
+
+    model.instance_variable_get(media_original_filenames_var)[original_filename.to_sym]
   end
 end
