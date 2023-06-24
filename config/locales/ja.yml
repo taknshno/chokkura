@@ -234,7 +234,7 @@ ja:
     title:
       root: "茨城にちょっと行ってみたくなる -ちょっくら茨城-"
       confirm_page: "確認画面"
-      edit_user_info: "ユーザ情報編集"
+      edit_user_info: "ユーザ情報の編集"
     admin_menus:
       watch_users: "ユーザ一覧を見る"
       watch_spots: "スポット一覧を見る"
@@ -261,6 +261,7 @@ ja:
       tagged_spot_count: '紐付けスポット数'
       with_tags_count: '紐付けタグ数'
       watch_users_index: 'ユーザ一覧を見る'
+      watch_user_info: 'ユーザ情報を見る'
       create_user: 'ユーザを追加する'
       watch_spots_index: 'スポット一覧を見る'
       create_spot: 'スポットを追加する'

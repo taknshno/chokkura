@@ -1,19 +1,58 @@
 <header class="header clearfix">
-  <%= link_to root_path do %>
-    <%= image_tag 'title_logo.png', class: 'logo-image' %>
-  <% end %>
-  <div class="top_menu clearfix">
-    <ul>
-      <% if user_signed_in? %>
-        <li><strong><%= link_to current_user.name, user_path(current_user.id) %></strong></li>
-        <% if current_user.admin? %>
-          <li><%= link_to t('views.messages.admin_menu'), admin_index_path %></li>
+  <nav class="navbar bg-white navbar-light justify-content-end">
+    <!-- Title Logo -->
+    <%= link_to root_path do %>
+      <%= image_tag 'title_logo.png', class: 'logo-image' %>
+    <% end %>
+    <!-- Menu for Login User -->
+    <% if user_signed_in? %>
+      <div class="ml-auto mr-4">
+        <%= link_to user_path(current_user.id), title:t('views.messages.watch_user_info') do %>
+          <div class="header_user_area text-secondary">
+            <h2 class="mr-3">
+              <span class="bi bi-person-circle"></span>
+            </h2>
+            <h4 class="d-none d-sm-block"><%= current_user.name %></h4>
+          </div>
         <% end %>
-        <li><%= link_to t('views.messages.logout'), destroy_user_session_path, method: :delete %></li>
-      <% else %>
-        <li><%= link_to t('views.messages.signup'), new_user_registration_path %></li>
-        <li><%= link_to t('views.messages.login'), new_user_session_path %></li>
-      <% end %>
-    </ul>
-  </div>
+      </div>
+      <!-- Humburger Menu -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+        <!-- Menu for Signed User -->
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item text-left">
+            <%= link_to edit_user_registration_path, method: :get, class:"nav-link" do %>
+              <span class="bi bi-pencil-square" alt="<%= t('views.title.edit_user_info') %>"></span>
+              <%= t('views.messages.edit_user_info') %>
+            <% end %>
+          </li>
+          <% if current_user.admin? %>
+            <li class="nav-item text-left">
+              <%= link_to admin_index_path, class:"nav-link" do %>
+                <span class="bi bi-ui-checks-grid mr-1"></span>
+                <%=t('views.messages.admin_menu') %>
+              <% end %>
+            </li>
+          <% end %>
+          <li class="nav-item text-left">
+            <%= link_to destroy_user_session_path, method: :delete, class:"nav-link" do %>
+              <span class="bi bi-box-arrow-in-right mr-1"></span>
+              <%= t('views.messages.logout') %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    <% else %>
+      <!-- Menu for Not Login User -->
+      <div class="ml-auto top_menu">
+        <ul>
+          <li><%= link_to t('views.messages.signup'), new_user_registration_path, class:"nav-link" %></li>
+          <li><%= link_to t('views.messages.login'), new_user_session_path, class:"nav-link" %></li>
+        </ul>
+      </div>
+    <% end %>
+  </nav>
 </header>
