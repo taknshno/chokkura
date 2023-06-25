@@ -7,7 +7,7 @@
     <!-- Menu for Login User -->
     <% if user_signed_in? %>
       <div class="ml-auto mr-4">
-        <%= link_to user_path(current_user.id), title:t('views.messages.watch_user_info') do %>
+        <%= link_to user_path(current_user.id), title:t('views.messages.watch_user_info'), class: "text-decoration-none" do %>
           <div class="header_user_area text-secondary">
             <h2 class="mr-3">
               <span class="bi bi-person-circle"></span>

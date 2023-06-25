@@ -9,12 +9,12 @@
   letter-spacing: 0.2em;
 }
 
-.profile_item {
+.profile_info {
   margin-left: 20px;
   padding-left: 5px;
 }
 
-.profile_item_title h3 {
+.profile_contents_title h3 {
   line-height: 20px;
   font-weight: 600;
   letter-spacing: 0.2em;
@@ -22,12 +22,20 @@
   border-left: 2px solid gray;
 }
 
-.profile_item_title div {
+.profile_contents_title div {
   display: inline-block;
 }
 
-.profile_item_title span {
-  font-size: 1.5rem ;
+.profile_contents_title span {
+  font-size: 1.5rem;
+}
+
+.profile_info_item span{
+  vertical-align: middle;
+}
+
+.profile_info_val{
+  letter-spacing: 0.1em;
 }
 
 .favorite-spot {
