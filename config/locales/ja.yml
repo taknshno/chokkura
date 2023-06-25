@@ -234,7 +234,7 @@ ja:
     title:
       root: "茨城にちょっと行ってみたくなる -ちょっくら茨城-"
       confirm_page: "確認画面"
-      edit_user_info: "ユーザ情報編集"
+      edit_user_info: "ユーザ情報の編集"
     admin_menus:
       watch_users: "ユーザ一覧を見る"
       watch_spots: "スポット一覧を見る"
@@ -248,8 +248,8 @@ ja:
       key_text_html: "海、山、湖、自然あふれる場所。<br />都心からでも思い立ったらすぐ行けます。<br />ちょっとしたお出かけ気分で行ってみませんか？"
       no_favorite_spot_html: "お気に入りのスポットが登録されていません。<br />行ってみたいところを探してみましょう！"
       spots_index: '観光スポット一覧'
-      register_spot: '観光スポットの登録'
-      edit_spot: '観光スポットの編集'
+      register_spot: 'スポットの新規登録'
+      edit_spot: 'スポットの編集'
       select_area: 'エリアの選択'
       create_tag: 'タグの新規登録'
       edit_tag: 'タグの編集'
@@ -261,11 +261,11 @@ ja:
       tagged_spot_count: '紐付けスポット数'
       with_tags_count: '紐付けタグ数'
       watch_users_index: 'ユーザ一覧を見る'
+      watch_user_info: 'ユーザ情報を見る'
       create_user: 'ユーザを追加する'
       watch_spots_index: 'スポット一覧を見る'
       create_spot: 'スポットを追加する'
       watch_tags_index: 'タグ一覧を見る'
-      create_tag: 'タグを追加する'
       user_profile: 'ユーザ情報'
       favorited_spots: 'お気に入りスポット'
       signup: 'ユーザ登録'

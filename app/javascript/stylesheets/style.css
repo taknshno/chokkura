@@ -11,9 +11,17 @@ body {
   margin: 0 auto;
 }
 
+.bread-wrapper {
+  margin:0 auto;
+  padding: 50px 20px 0;
+  background-color:whitesmoke;
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+}
+
 .main-wrapper {
   margin:0 auto;
-  padding-top: 75px;
+  padding-top: 20px;
   background-color: #FFF;
 }
 
@@ -78,14 +86,13 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 20;
+  z-index: 2;
 }
 
 .logo-image {
   float: left;
   max-height: 40px;
-  margin-left: 10px;
-  margin-top: 5px;
+  vertical-align: middle;
 }
 
 .top_menu {
@@ -98,12 +105,32 @@ body {
 }
 
 .top_menu li {
-  font-size: 1.5rem;
-  line-height: 50px;
-  padding: 0px 12px;
+  font-size: 1.3rem;
   float: left;
   width: auto;
   list-style: none;
+}
+
+.navbar {
+  font-size: 1.6rem;
+}
+
+.navbar-nav {
+  float: right;
+}
+
+.header_user_area {
+  display: flex;
+}
+
+.header_user_area h2{
+  margin: auto;
+  vertical-align: middle;
+}
+
+.header_user_area h4{
+  margin: auto;
+  vertical-align: middle;
 }
 
 .clearfix:after {

@@ -9,15 +9,15 @@
 }
 
 .key_visual_area .copy{
-  position   : absolute;
-  display    : inline-block;
+  position: absolute;
+  display: inline-block;
   white-space: nowrap;
-  padding    : 20px;
-  background : rgba(0, 0, 0, 0.7);
-  color      : #fff;
-  top        : 10%;
-  right      : 5%;
-  z-index    : 11;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  top: 10%;
+  right: 5%;
+  z-index: 1;
 }
 
 .key_visual_area .copy h4{
@@ -72,7 +72,7 @@
 }
 
 .spot_search_area {
-  z-index: 50;
+  z-index: 1;
 }
 
 .spot_search_area div {
