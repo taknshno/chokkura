@@ -15,13 +15,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript"></script>
-
   </head>
   <body>
     <%= render 'layouts/flash_message' %>
     <%= render 'layouts/header' %>
+    <div class="bread-wrapper">
+      <%= breadcrumbs separator: " &rsaquo; " %>
+    </div>
     <div class="main-wrapper">
-     <%= yield %>
+      <%= yield %>
     </div>
     <%= render 'layouts/footer' %>
   </body>
