@@ -1,0 +1,115 @@
+.overview_wrapper {
+  background: linear-gradient(-45deg, rgb(215, 243, 241),rgb(102, 168, 238));
+  //background: linear-gradient(-45deg, rgb(243, 238, 215),rgb(238, 202, 102));
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.overview_area {
+  border-radius: 15px;
+  background-color: #FFF;
+  max-width: 1000px;
+  margin: 0 40px;
+}
+
+.overview_area img {
+	width: 100%;
+}
+
+.overview_float_area {
+  position: absolute;
+  display: inline-block;
+  white-space: nowrap;
+  padding: 2px;
+  background: #FFF;
+  color: #fff;
+  width: 26%;
+  aspect-ratio: 4 / 3;
+  height: auto;
+  opacity: 0;
+  z-index: 1;
+}
+
+.float_area1 {
+  top: 5%;
+  left: 40%;
+  animation: fadein 2s ease-out forwards;
+}
+
+.float_area2 {
+  top: 35%;
+  right: 10%;
+  animation: fadein 2s ease-out forwards;
+  animation-delay: 2s;
+}
+
+.float_area3 {
+  top: 60%;
+  left: 25%;
+  animation: fadein 2s ease-out forwards;
+  animation-delay: 4s;
+}
+
+@keyframes fadein {
+  100% {opacity: 1}
+}
+
+.overview_float_img {
+  height: 100%;
+}
+
+.overview_title_area {
+  max-height: 80px;
+}
+
+.overview_title_logo img {
+  max-width: 80%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.overview_text_area {
+  font-size: 1.4rem;
+	margin-bottom: 1.5rem;
+	line-height: 2.5rem;
+  letter-spacing: 1px;
+  height: auto;
+}
+
+.overview_button_area {
+  max-height: 125px;
+}
+
+.overview-login-item {
+  text-align: center;
+}
+
+.overview-login-item h3 {
+  font-size: 1.3rem;
+  line-height: 20px;
+  letter-spacing: 0.2em;
+  margin: 0 auto 20px;
+}
+
+.overview-login-item span {
+  font-size: 3rem;
+  margin: 0 auto;
+}
+
+.overview-login-btn a:hover {
+  text-decoration: none;
+}
+
+.overview-login-btn div {
+  background-color:#ffac07;
+}
+
+.overview-login-btn div:hover {
+  background-color: #d37000;
+}
+
+.overview-not-login-btn div {
+  background-color:gray;
+}

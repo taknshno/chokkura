@@ -49,3 +49,4 @@ gem 'net-imap'
 gem 'net-pop'
 gem 'fog-aws'
 gem "aws-sdk-s3", require: false
+gem 'gretel'

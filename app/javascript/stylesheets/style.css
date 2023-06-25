@@ -11,9 +11,17 @@ body {
   margin: 0 auto;
 }
 
+.bread-wrapper {
+  margin:0 auto;
+  padding: 50px 20px 0;
+  background-color:whitesmoke;
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+}
+
 .main-wrapper {
   margin:0 auto;
-  padding-top: 75px;
+  padding-top: 20px;
   background-color: #FFF;
 }
 
