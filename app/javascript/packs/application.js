@@ -11,6 +11,7 @@ import '../stylesheets/cards';
 import '../stylesheets/spot_show';
 import '../stylesheets/form';
 import '../stylesheets/user';
+import '../stylesheets/overview';
 
 Rails.start()
 // Turbolinks.start()

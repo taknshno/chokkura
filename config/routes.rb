@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: 'top#index'
+
   namespace :admin do
     get 'users/index'
     get 'users/show'
@@ -7,8 +9,6 @@ Rails.application.routes.draw do
     sessions: "users/sessions",
     registrations: "users/registrations"
   }
-
-  root to: 'spots#index'
 
   resources :spots, only: [:index, :show] do
     collection do
