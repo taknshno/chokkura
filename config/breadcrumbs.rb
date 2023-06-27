@@ -1,15 +1,14 @@
-crumb :root do
-  link "Home", root_path
-end
+# crumb :root do
+#   link "Home", root_path
+# end
 
-crumb :spot_index do
-  link t('activerecord.models.spot'), spots_path
-  parent :root
+crumb :root do
+  link "Home", spots_path
 end
 
 crumb :spot_show do |spot|
   link "#{spot.name}", spot_path(spot)
-  parent :spot_index
+  parent :root
 end
 
 crumb :user_show do |user|

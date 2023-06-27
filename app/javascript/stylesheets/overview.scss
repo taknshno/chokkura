@@ -70,14 +70,6 @@
   margin: 0 auto;
 }
 
-.overview_text_area {
-  font-size: 1.4rem;
-	margin-bottom: 1.5rem;
-	line-height: 2.5rem;
-  letter-spacing: 1px;
-  height: auto;
-}
-
 .overview_button_area {
   max-height: 125px;
 }
@@ -87,7 +79,8 @@
 }
 
 .overview-login-item h3 {
-  font-size: 1.3rem;
+  //font-size: 1.3rem;
+  font-size: clamp(0.9rem, 0.818rem + 0.51vw, 1.5rem);
   line-height: 20px;
   letter-spacing: 0.2em;
   margin: 0 auto 20px;
@@ -112,4 +105,70 @@
 
 .overview-not-login-btn div {
   background-color:gray;
+}
+
+.carousel-inner {
+  background-color: rgb(255, 250, 240);
+  border-radius: 15px;
+}
+
+.carousel-caption {
+  height: 100%;
+  left: 10%;
+  right: 10%;
+  bottom: initial;
+  padding: 20px 10px;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+  vertical-align: middle;
+  color: #333;
+}
+
+.carousel-caption h3 {
+  //font-size: 1.6rem;
+  font-size: clamp(1.1rem, 1.118rem + 0.5vw, 1.6rem);
+  margin-bottom: 10px;
+  font-weight: 600;
+  line-height: 4rem;
+}
+
+.carousel-caption p {
+  //font-size: 1.2rem;
+  font-size: clamp(0.8rem, 0.818rem + 0.5vw, 1.4rem);
+  line-height: 2.5rem;
+  text-align: left;
+}
+
+.carousel-item img {
+    width: auto;
+    max-height: 125px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 10%;
+  background-color: palegoldenrod;
+  color: #333 !important;
+  font-size: 20px;
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  font-size: 20px;
+}
+
+.carousel .carousel-item {
+  height: 300px;
+}
+
+$carousel-indicator-length: 10px;
+
+.carousel-indicators {
+  & li {
+    background-color: orange;
+    border-radius: 50%;
+    margin: 1px 3px;
+    height: $carousel-indicator-length;
+    max-width: $carousel-indicator-length;
+  }
 }
