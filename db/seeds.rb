@@ -140,3 +140,15 @@ Spot.create!(
 
 
 puts "Spot Data ...ok"
+
+
+### Favorite ###
+
+User.all.each do |user|
+  spot_ids = Spot.pluck(:id).sample(rand(1..3))
+  spot_ids.each do |spot_id|
+    Favorite.create(user_id: user.id, spot_id: spot_id)
+  end
+end
+
+puts "Favorite Data ...ok"
