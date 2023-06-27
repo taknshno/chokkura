@@ -49,8 +49,16 @@
       <!-- Menu for Not Login User -->
       <div class="ml-auto top_menu">
         <ul>
-          <li><%= link_to t('views.messages.signup'), new_user_registration_path, class:"nav-link" %></li>
-          <li><%= link_to t('views.messages.login'), new_user_session_path, class:"nav-link" %></li>
+          <li>
+            <%= link_to  new_user_registration_path, class:"nav-link" do %>
+              <span class="bi bi-person-plus-fill"></span>
+               <%= t('views.messages.signup') %><% end %>
+          </li>
+          <li>
+            <%= link_to new_user_session_path, class:"nav-link" do %>
+              <span class="bi bi-box-arrow-in-up"></span>
+              <%= t('views.messages.login') %><% end %>
+          </li>
         </ul>
       </div>
     <% end %>
