@@ -331,4 +331,6 @@ ja:
     delete_tag_failed: 'タグの削除に失敗しました'
     favorited_spot: 'スポットをお気に入りに登録しました'
     removed_favorite_spot: 'スポットのお気に入りを解除しました'
-
+    guest_logged_in_as_common_user: '一般ユーザとしてゲストログインしました'
+    guest_logged_in_as_admin_user: '管理者ユーザとしてゲストログインしました'
+    guest_account_cannot_update_or_delete: 'ゲストアカウントの更新や削除はできません'

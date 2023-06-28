@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get 'users/index'
     get 'users/show'
   end
+
   devise_for :users, controllers: {
     sessions: "users/sessions",
     registrations: "users/registrations"
@@ -39,6 +40,11 @@ Rails.application.routes.draw do
   end
 
   resources :favorites, only: [:create, :destroy]
+
+  devise_scope :user do
+    post 'users/common_guest_sign_in', to: 'users/sessions#common_guest_sign_in'
+    post 'users/admin_guest_sign_in', to: 'users/sessions#admin_guest_sign_in'
+  end
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
