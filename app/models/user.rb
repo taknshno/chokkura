@@ -1,12 +1,16 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, password_length: 6..128
 
   before_update :not_change_last_admin
   before_destroy :not_delete_last_admin
 
   has_many :favorites, dependent: :destroy
   has_many :favorite_spots, through: :favorites, source: :spot
+
+  validates :name, presence: true, length: { maximum: 60 }
+  validates :email, presence: true, length: { maximum: 255 },
+  format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, uniqueness: true
 
   enum location: {
     "未設定": 0,
