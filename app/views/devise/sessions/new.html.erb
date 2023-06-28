@@ -10,11 +10,11 @@
         <div class="form-group shadow px-3 py-4 mb-5 mx-auto bg-white w-75 rounded justify-content-center">
           <div class="field py-2">
             <%= f.label :email, class:"badge" %>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input-font form-control form-control-lg"  %>
+            <%= f.email_field :email, placeholder: t('views.form_supplement.email'), autofocus: true, autocomplete: "email", class:"input-font form-control form-control-lg"  %>
           </div>
           <div class="field py-2">
             <%= f.label :password, class:"badge" %>
-            <%= f.password_field :password, autocomplete: "current-password", class:"input-font form-control form-control-lg" %>
+            <%= f.password_field :password, placeholder: t('views.form_supplement.password'), autocomplete: "current-password", class:"input-font form-control form-control-lg" %>
             <% if devise_mapping.rememberable? %>
               <div class="field">
                 <%= f.check_box :remember_me %>

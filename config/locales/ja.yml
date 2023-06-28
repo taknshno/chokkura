@@ -296,6 +296,13 @@ ja:
       area: "エリア"
       map_info: "地図情報"
     form_supplement:
+      user_name: "名前を入力してください。"
+      email: "メールアドレスを入力してください。"
+      password: "パスワードを入力してください。"
+      password_confirmation: "パスワードを再入力してください。"
+      new_password: "新しいパスワードを入力してください。"
+      new_password_confirmation: "新しいパスワードを再入力してください。"
+      current_password: "現在のパスワードを入力してください。"
       name: "スポットの名称を入力します。"
       area: "スポットの所在エリアを選択します。"
       address: "スポットの住所を入力します。"
