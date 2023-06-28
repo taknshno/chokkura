@@ -94,6 +94,7 @@
                 <span class="sr-only">Next</span>
               </a>
             </div>
+            <%# Login Button %>
             <div class="overview_button_area row p-3 mb-4">
               <div class="col-4 p-0 overview-login-btn">
                 <%= link_to spots_path do %>
@@ -103,16 +104,16 @@
                   </div>
                 <% end %>
               </div>
-              <div class="col-4 p-0 overview-not-login-btn">
-                <%= link_to '#' do %>
+              <div class="col-4 p-0 overview-login-btn">
+                <%= link_to users_common_guest_sign_in_path, method: :post do %>
                   <div class="overview-login-item border text-white m-1">
                     <span class="bi bi-person-badge"></span>
                     <h3><%= t('views.button.guest_login_html') %></h3>
                   </div>
                 <% end %>
               </div>
-              <div class="col-4 p-0 overview-not-login-btn">
-                <%= link_to '#' do %>
+              <div class="col-4 p-0 overview-login-btn">
+                <%= link_to users_admin_guest_sign_in_path, method: :post do %>
                   <div class="overview-login-item border text-white m-1">
                     <span class="bi bi-key"></span>
                     <h3><%= t('views.button.admin_guest_login_html') %></h3>

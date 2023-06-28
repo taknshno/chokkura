@@ -10,23 +10,23 @@
         <div class="form-group shadow px-3 py-4 mb-5 mx-auto bg-white w-75 rounded justify-content-center">
           <div class="field py-2">
             <%= f.label :name, class:"badge" %>
-            <%= f.text_field :name, autofocus: true, size: "54", class:"input-font form-control form-control-lg"  %>
+            <%= f.text_field :name, placeholder: t('views.form_supplement.user_name'), autofocus: true, size: "54", class:"input-font form-control form-control-lg"  %>
           </div>
           <div class="field py-2">
             <%= f.label :email, class:"badge" %>
-            <%= f.email_field :email, autofocus: true, size: "54", class:"input-font form-control form-control-lg" %>
+            <%= f.email_field :email, placeholder: t('views.form_supplement.email'), autofocus: true, size: "54", class:"input-font form-control form-control-lg" %>
           </div>
           <div class="field py-2">
             <%= f.label :password, class:"badge" %>
             <%# <% if @minimum_password_length %>
             <%# <%= f.password_field :password, autocomplete: "new-password", placeholder: t('devise.shared.minimum_password_length', count: @minimum_password_length), class:"input-font form-control form-control-lg" %>
             <%# <% else %>
-            <%= f.password_field :password, autocomplete: "new-password", class:"input-font form-control form-control-lg" %>
+            <%= f.password_field :password, placeholder: t('views.form_supplement.password'), autocomplete: "new-password", class:"input-font form-control form-control-lg" %>
             <%# <% end %>
           </div>
           <div class="field">
             <%= f.label :password_confirmation, class:"badge" %>
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"input-font form-control form-control-lg" %>
+            <%= f.password_field :password_confirmation, placeholder: t('views.form_supplement.password_confirmation'), autocomplete: "new-password", class:"input-font form-control form-control-lg" %>
           </div>
           <div class="actions mt-3 pt-4 border-top">
             <%= f.submit t('.sign_up'), class:"w-75 mx-auto btn-primary input-font form-control form-control-lg" %>

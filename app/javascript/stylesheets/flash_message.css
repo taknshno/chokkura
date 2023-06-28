@@ -1,7 +1,8 @@
 .flash-wrapper {
   position: absolute;
-  top: 5px;
+  top: 50px;
   right: 5px;
+  width: 30%;
   z-index: 999;
 }
 
@@ -9,6 +10,9 @@
   position: absolute;
   top: 10px;
   right: 5px;
-  width: 350px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+  padding-top: 8px !important;
 }
