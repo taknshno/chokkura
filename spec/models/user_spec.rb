@@ -34,7 +34,7 @@ RSpec.describe User, type: :model do
       expect(user).not_to be_valid
     end
 
-    it 'emailが正しいルールで書かれていない場合は登録ができない' do
+    it 'emailが正しいルールで書かれてない場合は登録ができない' do
       user = FactoryBot.build(:user, email: "test.example.com")
       expect(user).not_to be_valid
       user = FactoryBot.build(:user, email: "test@examplecom")
