@@ -1,7 +1,7 @@
 class Admin::UsersController < ApplicationController
   before_action :if_not_admin
-  skip_before_action :if_not_admin, only: [:after_ensure]
-  before_action :set_user, only: [:show, :control]
+  skip_before_action :if_not_admin, only: %i[after_ensure]
+  before_action :set_user, only: %i[show control destroy]
 
   def index
     @users = User.all
@@ -31,6 +31,16 @@ class Admin::UsersController < ApplicationController
         flash[:danger] = t('views.messages.change_admin_failed')
         redirect_to admin_users_path
       end
+    end
+  end
+
+  def destroy
+    if @user.destroy
+      flash[:notice] = t('flash.deleted_user')
+      redirect_to admin_users_index_path
+    else
+      flash[:danger] = t('flash.delete_user_failed')
+      redirect_to admin_users_index_path
     end
   end
 
