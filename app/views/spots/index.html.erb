@@ -60,10 +60,10 @@
                   <% if user_signed_in? %>
                     <% if spot.favorited_by?(current_user)  %>
                       <%= link_to favorite_path(spot), id:"unfav_#{spot.id}", method: :delete, class:"unfav_btn" do %>
-                        <span class="bi bi-heart-fill" title="<%= t('views.messages.remove_favorite') %>"></span><% end %>
+                        <span class="bi bi-heart-fill" id="faved_<%= spot.id %>" title="<%= t('views.messages.remove_favorite') %>"></span><% end %>
                     <% else %>
                       <%= link_to favorites_path(spot_id: spot.id), id:"fav_#{spot.id}", class:"fav_btn", method: :post do %>
-                        <span class="bi bi-heart" title="<%= t('views.messages.add_favorite') %>"></span><% end %>
+                        <span class="bi bi-heart" id="unfaved_<%= spot.id %>" title="<%= t('views.messages.add_favorite') %>"></span><% end %>
                     <% end %>
                   <% end %>
                 </h3>
