@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :tagging do
-    spot { nil }
-    tag { nil }
+    association :spot
+    association :tag
   end
 end

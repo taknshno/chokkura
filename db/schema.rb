@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_20_225424) do
+ActiveRecord::Schema.define(version: 2023_06_29_004556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2023_06_20_225424) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["spot_id"], name: "index_favorites_on_spot_id"
+    t.index ["user_id", "spot_id"], name: "index_favorites_on_user_id_and_spot_id", unique: true
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
@@ -45,6 +46,7 @@ ActiveRecord::Schema.define(version: 2023_06_20_225424) do
     t.bigint "tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["spot_id", "tag_id"], name: "index_taggings_on_spot_id_and_tag_id", unique: true
     t.index ["spot_id"], name: "index_taggings_on_spot_id"
     t.index ["tag_id"], name: "index_taggings_on_tag_id"
   end

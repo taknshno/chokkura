@@ -11,7 +11,7 @@ class Spot < ApplicationRecord
   enum area: { 県北: 1, 県央: 2, 県西: 3, 県南: 4, 鹿行: 5 }
 
   validates :name, presence: true, uniqueness: true
-  validates :area, presence: true, length: { maximum: 10 }
+  validates :area, presence: true
   validates :address, presence: true, length: { maximum: 160 }
   validates :phone, length: { maximum: 21 }
   validates :holiday, length: { maximum: 10 }
