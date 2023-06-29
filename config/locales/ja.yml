@@ -285,11 +285,6 @@ ja:
       select_image: "画像の選択"
       add_favorite: "お気に入りに登録する"
       remove_favorite: "お気に入りを解除する"
-      grant_admin: "管理者権限を付与しました"
-      ensure_admin: "管理者権限を抹消しました"
-      already_admin: "すでに管理者権限があります"
-      already_not_admin: "すでに管理者権限はありません"
-      change_admin_failed: "管理者権限の変更に失敗しました"
       register_with_this: "以下の内容で登録します"
       unregistered: "未登録"
       spot_overview: "スポット概要"
@@ -340,6 +335,11 @@ ja:
     delete_tag_failed: 'タグの削除に失敗しました'
     favorited_spot: 'スポットをお気に入りに登録しました'
     removed_favorite_spot: 'スポットのお気に入りを解除しました'
+    grant_admin: "管理者権限を付与しました"
+    ensure_admin: "管理者権限を抹消しました"
+    already_admin: "すでに管理者権限があります"
+    already_not_admin: "すでに管理者権限はありません"
+    change_admin_failed: "管理者権限の変更に失敗しました"
     guest_logged_in_as_common_user: '一般ユーザとしてゲストログインしました'
     guest_logged_in_as_admin_user: '管理者ユーザとしてゲストログインしました'
     guest_account_cannot_update_or_delete: 'ゲストアカウントの更新や削除はできません'

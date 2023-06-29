@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   before_action :authorize_user
 
   def show
-    # @favorites = current_user.favorites
   end
 
   private
