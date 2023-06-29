@@ -79,7 +79,7 @@ class Admin::SpotsController < ApplicationController
   def if_not_admin
     unless current_user.admin? then
       flash[:danger] = t('flash.permission_denied')
-      redirect_to root_path
+      redirect_to spots_path
     end
   end
 end
