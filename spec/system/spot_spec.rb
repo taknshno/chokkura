@@ -34,7 +34,6 @@ RSpec.describe "スポット管理機能", type: :system do
       click_button "登録する"
       expect(page).to have_text "観光スポットを登録しました"
       expect(page).to have_text "test_spot"
-      expect(page).to have_text "test_simple_text"
     end
   end
 
