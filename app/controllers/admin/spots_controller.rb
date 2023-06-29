@@ -33,7 +33,7 @@ class Admin::SpotsController < ApplicationController
     else
       if @spot.save
         flash[:notice] = t('flash.registered_spot')
-        redirect_to spots_path
+        redirect_to admin_spots_path
       else
         flash[:danger] = t('flash.input_error')
         render :new
@@ -50,7 +50,7 @@ class Admin::SpotsController < ApplicationController
   def update
     if @spot.update(spot_params)
       flash[:notice] = t('flash.updated_spot')
-      redirect_to spots_path
+      redirect_to admin_spots_path
     else
       render 'edit'
     end
@@ -59,7 +59,7 @@ class Admin::SpotsController < ApplicationController
   def destroy
     if @spot.destroy
       flash[:notice] = t('flash.deleted_spot')
-      redirect_to spots_path
+      redirect_to admin_spots_path
     else
       render 'edit'
     end
