@@ -19,9 +19,9 @@ RSpec.describe Favorite, type: :model do
     end
 
     it "同じuser_idとspot_idのペアが先に登録されている場合は登録ができない" do
-      user = FactoryBot.create(:user)
-      spot = FactoryBot.create(:spot)
-      FactoryBot.create(:favorite, user: user, spot: spot)
+      user = create(:user)
+      spot = create(:spot)
+      create(:favorite, user: user, spot: spot)
 
       new_favorite = Favorite.new(user: user, spot: spot)
       expect(new_favorite).not_to be_valid

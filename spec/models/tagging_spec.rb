@@ -19,9 +19,9 @@ RSpec.describe Tagging, type: :model do
     end
 
     it "同じspot_idとtag_idのペアが先に登録されている場合は登録ができない" do
-      spot = FactoryBot.create(:spot)
-      tag = FactoryBot.create(:tag)
-      FactoryBot.create(:tagging, spot: spot, tag: tag)
+      spot = create(:spot)
+      tag = create(:tag)
+      create(:tagging, spot: spot, tag: tag)
 
       new_tagging = Tagging.new(spot: spot, tag: tag)
       expect(new_tagging).not_to be_valid
