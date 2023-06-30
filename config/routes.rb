@@ -32,7 +32,7 @@ Rails.application.routes.draw do
         post :confirm
       end
     end
-    resources :users, :only => [:index, :show, :new, :edit] do
+    resources :users, :only => [:index, :show, :destroy] do
       member do
         get :control
       end

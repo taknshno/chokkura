@@ -2,7 +2,7 @@
   <div class="flash-wrapper" id="flash_msg">
     <div class="alert alert-<%= type == 'notice' ? 'success' : 'danger' %>">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      <%= message %>
+      <span><%= message %></span>
     </div>
   </div>
 <% end %>

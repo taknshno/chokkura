@@ -44,7 +44,7 @@
                 <div class="col-6 col-sm-4 col-md-3 my-4">
                   <div class="favorite-spot area-<%= spot.area_before_type_cast %> border shadow-sm">
                     <div class="favorite-spot-item">
-                      <% if spot.images %>
+                      <% if spot.images.present? %>
                         <%= image_tag(spot.images.first.url) %>
                       <% else %>
                         <%= image_tag 'no_spot.png' %>

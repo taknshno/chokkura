@@ -72,7 +72,7 @@
             <% @spot.tags.each do |tag| %>
               <li>
                   <%= link_to search_spots_path(tag_id: tag.id), title: tag.name do %>
-                    <span class="badge bg-info text-white"><%= tag.name %></span><% end %>
+                    <span id="tagged_<%= tag.id %>" class="badge bg-info text-white"><%= tag.name %></span><% end %>
                 </li>
             <% end %>
           </ul>

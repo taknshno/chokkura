@@ -31,6 +31,11 @@ crumb :admin_users do
   parent :admin_index
 end
 
+crumb :admin_user_show do |user|
+  link t('views.messages.user_profile'), admin_user_path(user)
+  parent :admin_users
+end
+
 crumb :admin_spots do
   link t('views.messages.spots_index'), admin_spots_path
   parent :admin_index

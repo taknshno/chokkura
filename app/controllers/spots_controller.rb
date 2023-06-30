@@ -16,9 +16,6 @@ class SpotsController < ApplicationController
     if tag_id.present?
       @spots = @spots.tag_search(tag_id.to_i)
     end
-
-    #pagination
-    #@spots = @spots.page(params[:page])
     render "index"
   end
 
