@@ -23,6 +23,11 @@ RSpec.describe "スポット管理機能", type: :system do
     it "管理者ユーザはスポット作成画面に移動してスポットを新規登録できる" do
       visit new_admin_spot_path
       fill_in "スポット名", with: "test_spot"
+      attach_file 'スポットイメージ', [
+        "#{Rails.root}/spec/fixtures/test_image1.jpg",
+        "#{Rails.root}/spec/fixtures/test_image2.jpg",
+        "#{Rails.root}/spec/fixtures/test_image3.jpg"
+      ]
       select "県央", from: "所在エリア"
       fill_in "住所", with: "test_address"
       fill_in "電話番号", with: "000-0000-0000"
@@ -33,7 +38,20 @@ RSpec.describe "スポット管理機能", type: :system do
       click_button "確認する"
       click_button "登録する"
       expect(page).to have_text "観光スポットを登録しました"
+      visit spots_path
       expect(page).to have_text "test_spot"
+      expect(page).to have_text "test_simple_text"
+      click_link "test_spot"
+      spot_images = Spot.last.images
+      expect(page).to have_selector("img[src$='#{spot_images[0]}']")
+      expect(page).to have_selector("img[src$='#{spot_images[1]}']")
+      expect(page).to have_selector("img[src$='#{spot_images[2]}']")
+      expect(page).to have_text "test_spot"
+      expect(page).to have_text "県央"
+      expect(page).to have_text "test_address"
+      expect(page).to have_text "日曜日"
+      expect(page).to have_text "test_copy"
+      expect(page).to have_text "test_detail_text"
     end
   end
 
