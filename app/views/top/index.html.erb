@@ -44,11 +44,12 @@
             </div>
             <div id="myCarousel" class="carousel slide" data-bs-touch="false">
               <%# Indicator %>
-              <ol class="carousel-indicators">
+              <ol class="carousel-indicators mb-1">
                 <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
                 <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
                 <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
                 <li data-bs-target="#myCarousel" data-bs-slide-to="3"></li>
+                <li data-bs-target="#myCarousel" data-bs-slide-to="4"></li>
               </ol>
               <%# Inner %>
               <div class="carousel-inner">
@@ -63,7 +64,9 @@
                 <div class="carousel-item" data-bs-interval="4000">
                   <div class="carousel-caption">
                     <h3><%= t('views.messages.app_function1_title') %></h3>
-                    <%= image_tag("no_spot.png") %>
+                    <%= link_to image_path("func_image1.jpg"), "data-lightbox": "func_image1.jpg" do %>
+                      <%= image_tag("func_image1.jpg") %>
+                    <% end %>
                     <p><%= t('views.messages.app_function1_text_html') %></p>
                   </div>
                 </div>
@@ -71,7 +74,9 @@
                 <div class="carousel-item" data-bs-interval="4000">
                   <div class="carousel-caption">
                     <h3><%= t('views.messages.app_function2_title') %></h3>
-                    <%= image_tag("no_spot.png") %>
+                    <%= link_to image_path("func_image2.jpg"), "data-lightbox": "func_image2.jpg" do %>
+                      <%= image_tag("func_image2.jpg") %>
+                    <% end %>
                     <p><%= t('views.messages.app_function2_text_html') %></p>
                   </div>
                 </div>
@@ -79,8 +84,20 @@
                 <div class="carousel-item" data-bs-interval="4000">
                   <div class="carousel-caption">
                     <h3><%= t('views.messages.app_function3_title') %></h3>
-                    <%= image_tag("no_spot.png") %>
-                    <p><%= t('views.messages.app_function3_text_html') %></p>
+                    <%= link_to image_path("func_image3_1.jpg"), "data-lightbox": "func_image3_1.jpg" do %>
+                      <%= image_tag("func_image3_1.jpg") %>
+                    <% end %>
+                    <p><%= t('views.messages.app_function3_1_text_html') %></p>
+                  </div>
+                </div>
+                <%# Item 5 %>
+                <div class="carousel-item" data-bs-interval="4000">
+                  <div class="carousel-caption">
+                    <h3><%= t('views.messages.app_function3_title') %></h3>
+                    <%= link_to image_path("func_image3_2.jpg"), "data-lightbox": "func_image3_2.jpg" do %>
+                      <%= image_tag("func_image3_2.jpg") %>
+                    <% end %>
+                    <p><%= t('views.messages.app_function3_2_text_html') %></p>
                   </div>
                 </div>
               </div>
