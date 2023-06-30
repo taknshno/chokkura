@@ -5,13 +5,10 @@
 
 #### 就業Termの技術
 - devise
-- cancancan
 - お気に入り機能
 
 #### カリキュラム外の技術
 - Google Maps API
-- ChatGPT API
-- Messaging API
 
 #### 実行手順
 ```
